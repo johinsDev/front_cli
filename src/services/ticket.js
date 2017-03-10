@@ -1,9 +1,18 @@
-// src/auth/index.js
 
-import {router} from '../main'
+import Vue from 'vue'
+import VueResource from 'vue-resource'
+
+import * as API from './const'
+
+Vue.use(VueResource)
 
 
-export default {
-
-
+export default  {
+    get: function (cb) {
+        Vue.http.get(API.TIKECT_URL)
+            .then((response) =>  cb(response.data.tickets))
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 }

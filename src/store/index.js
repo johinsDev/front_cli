@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
+import tickets from './modules/ticket'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,7 @@ export default new Vuex.Store({
     actions,
     getters,
     modules: {
-
+        tickets
     },
     strict: debug,
 })

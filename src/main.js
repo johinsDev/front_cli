@@ -6,8 +6,6 @@ import store from './store'
 
 Vue.use(VueRouter);
 
-export var route = new VueRouter();
-
 const router = new VueRouter({
         routes
 });
