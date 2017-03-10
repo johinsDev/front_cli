@@ -4,13 +4,15 @@ import * as types from '../mutation-types'
 //states initial
 
 const state = {
-    all: []
+    all: [],
+    added: []
 };
 
 //getters
 
 const getters = {
-  allTickets: (state) => state.all
+    allTickets: (state) => state.all,
+    allAdded: (state) => state.added
 };
 
 
@@ -21,7 +23,7 @@ const actions = {
         ticket.get(tickets => {
             commit(types.RECEIVE_TICKETS, { tickets })
         })
-    }
+    },
 };
 
 //mutations
@@ -29,7 +31,18 @@ const actions = {
 const mutations = {
     [types.RECEIVE_TICKETS] : (state , { tickets }) => {
         state.all = tickets;
-    }
+    },
+    [types.ADD_TICKET] (state, { id }) {
+        const record = state.added.find(p => p.id === id)
+        if (!record) {
+            state.added = [];
+            //aqui vaciamos el state y el localstorage agregamos el nuevo
+            //hay que cambiar la propieda para que la boleta agregada cambie
+            state.added.push({
+                id,
+            })
+        }
+    },
 };
 
 
