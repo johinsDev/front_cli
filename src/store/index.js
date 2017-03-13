@@ -9,13 +9,15 @@ import auth from './modules/auth'
 import * as types from './mutation-types'
 
 //falta hacer mas modular los servicios, las mutations, las states
-
+//revisar como reusar un formulario
+//revisar como no perder el estado atraves de los routes
+//revisar la mejor forma de proteger routes o middlewares
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
     state : {
-        errors: {}
+        errors: {},
     },
     actions,
     mutations:{

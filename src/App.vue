@@ -1,7 +1,7 @@
 <template>
     <section>
         <h1>Rutas con Vue Router</h1>
-        <router-link to="/">Home</router-link>
+        <router-link to="/">Boletas</router-link>
         <router-link to="/singin">Inicio de sesion</router-link>
         <hr>
         <ul>

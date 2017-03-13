@@ -3,7 +3,7 @@
     <div class="col-sm-4 col-sm-offset-4">
         <h2>Log In</h2>
         <p>Log in to your account to get some great quotes.</p>
-        <form action="" @submit.prevent="singin(email , password)">
+        <form action="" @submit.prevent="singin({email , password})">
             <div class="form-group">
                 <input
                         type="text"
@@ -22,6 +22,7 @@
             </div>
             <button class="btn btn-primary">Access</button>
         </form>
+        <p>No tienes usuario.Click <router-link  to="/singup">Aqui</router-link></p>
     </div>
 </template>
 
@@ -38,10 +39,17 @@
         methods: mapActions({
             singin: 'login'
         }),
+        created() {
+            this.$store.dispatch('getToken')
+        },
         beforeRouteEnter (to, from, next) {
             next(vm => {
-                vm.$store.state.tickets.added ? next() : next('/')
+                if ( vm.$store.state.tickets.added ){
+                    !vm.$store.state.auth.authenticate ? next() : next('/me')
+                }else{
+                    next('/')
+                }
             })
-        }
+        },
     }
 </script>
