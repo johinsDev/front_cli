@@ -12,7 +12,7 @@ const state = {
 
 const getters = {
     allTickets: (state) => state.all,
-    allAdded: (state) => state.added
+    getTicket: (state) => state.added
 };
 
 
@@ -24,6 +24,11 @@ const actions = {
             commit(types.RECEIVE_TICKETS, { tickets })
         })
     },
+    getTicket ({ commit }) {
+        ticket.findOne(ticket => {
+            commit(types.GET_TICKET , {ticket})
+        })
+    },
 };
 
 //mutations
@@ -32,15 +37,13 @@ const mutations = {
     [types.RECEIVE_TICKETS] : (state , { tickets }) => {
         state.all = tickets;
     },
+    [types.GET_TICKET] : (state , {ticket}) => {
+      state.added = ticket
+    },
     [types.ADD_TICKET] (state, { id }) {
-        const record = state.added.find(p => p.id === id)
+        const record = state.added == id;
         if (!record) {
-            state.added = [];
-            //aqui vaciamos el state y el localstorage agregamos el nuevo
-            //hay que cambiar la propieda para que la boleta agregada cambie
-            state.added.push({
-                id,
-            })
+            state.added = id
         }
     },
 };

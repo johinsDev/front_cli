@@ -14,5 +14,8 @@ export default  {
             .catch((err) => {
                 console.log(err)
             })
+    },
+    findOne: function (cb) {
+        return cb(window.localStorage.getItem('ticket'));
     }
 }

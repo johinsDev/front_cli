@@ -1,3 +1,4 @@
-/**
- * Created by sanandres on 10/03/17.
- */
+
+export const getErrors = (state) =>{
+    return state.errors;
+}

@@ -4,7 +4,7 @@
             {{ ticket.name }} - {{ ticket.price }}
             <button @click="add(i)">Adquirir Esta boleta</button>
         </li>
-        <p>{{ added | json }}</p>
+        <p>{{ added }}</p>
     </ul>
 </template>
 
@@ -14,13 +14,14 @@
 
         computed: mapGetters({
             tickets: 'allTickets',
-            added: 'allAdded'
+            added: 'getTicket'
         }),
         methods: mapActions([
             'add'
         ]),
         created () {
-            this.$store.dispatch('getAllTickets')
+            this.$store.dispatch('getAllTickets'),
+            this.$store.dispatch('getTicket')
         }
     }
 </script>

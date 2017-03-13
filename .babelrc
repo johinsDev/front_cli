@@ -1,5 +1,7 @@
+// http://stefan.magnuson.co/articles/frontend/using-es7-spread-operator-with-webpack/
 {
   "presets": [
+    "stage-2",
     ["latest", {
       "es2015": { "modules": false }
     }]
