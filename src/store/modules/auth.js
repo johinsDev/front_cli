@@ -25,6 +25,14 @@ const mutations = {
         state.user = user;
         state.authenticate = true;
     },
+    [types.SET_USER] : (state , user) => {
+        state.user = user;
+        state.authenticate = true;
+        localStorage.setItem('user' , JSON.stringify(user))
+        if (!user){
+            localStorage.removeItem('user');
+        }
+    },
     [types.SET_TOKEN] : (state , token) => {
         state.token = token
     },
@@ -36,8 +44,8 @@ const actions = {
     login({commit , dispatch} , data) {
 
         user.login(data , (data) => {
-            commit(types.GET_USER , data.user);
-            dispatch('setToken' , data.token)
+            commit(types.SET_USER , data.user);
+            dispatch('setToken' , data.token);
             redirect.push({path: 'me'})
         } , (err) => {
             dispatch('setErrors' , {errors: err.data})
@@ -66,8 +74,10 @@ const actions = {
     },
     logout({commit , state}){
         user.logout(() => {
-            commit(types.SET_TOKEN , '')
+            commit(types.SET_TOKEN , '');
+            commit(types.SET_USER , null);
             state.authenticate = false;
+            redirect.push({path: '/'});
         });
 
     }

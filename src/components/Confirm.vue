@@ -1,12 +1,15 @@
 <template>
     <div>
         <h1>Confirmacion de pago </h1>
-        <credita-card></credita-card>
+        <credit-card></credit-card>
     </div>
 </template>
 
 <script>
+    import creditCard from './Credit.vue'
     export default{
-
+        components: {
+            creditCard
+        }
     }
 </script>

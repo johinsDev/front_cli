@@ -5,7 +5,8 @@ import * as getters from './getters'
 import * as state from './states'
 import tickets from './modules/ticket'
 import auth from './modules/auth'
-import payment from './modules/payment'
+import data from './modules/data'
+import card from './modules/card'
 
 import * as types from './mutation-types'
 
@@ -13,6 +14,7 @@ import * as types from './mutation-types'
 //revisar como reusar un formulario
 //revisar como no perder el estado atraves de los routes
 //revisar la mejor forma de proteger routes o middlewares
+//revisar vue recource un progress de la peticion , como tambien un mejor lugar par alos interceptors
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -30,6 +32,7 @@ export default new Vuex.Store({
     modules: {
         tickets,
         auth,
-        payment
+        data,
+        card
     }
 })

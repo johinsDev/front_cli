@@ -9,7 +9,7 @@ export const add = ({ commit }, id) => {
 };
 
 export const setErrors = ({commit} , errors) => {
-    commit(types.SHOW_ERROR , { errors:errors.errors})
+    commit(types.SHOW_ERROR , { errors: errors.errors})
 };
 
 
