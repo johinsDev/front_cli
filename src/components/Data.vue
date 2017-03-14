@@ -41,10 +41,11 @@
             <button>Enviar datos</button>
         </form>
     </div>
+    {{ buyerista | json }}
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions , mapGetters} from 'vuex'
     export default{
         data() {
             return {
@@ -66,6 +67,9 @@
         },
         methods: mapActions({
             doPayment: 'setDataPayment'
+        }),
+        computed: mapGetters({
+            buyerista: 'getBuyer'
         }),
         beforeRouteEnter (to, from, next) {
             next(vm => {

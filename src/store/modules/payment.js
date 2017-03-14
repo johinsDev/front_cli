@@ -19,9 +19,9 @@ const getters = {
 //actions
 
 const actions = {
-    getInvoice ({ commit } , data) {
-        Payment.setData(data , 'invoice' , (data) => {
-            commit(types.SET_BUYER , data )
+    getBuyer ({ commit } , data) {
+        Payment.getData(data , 'buyer' , (data) => {
+            commit(types.GET_BUYER , data )
         })
     },
     setBuyer ({ commit } , data) {
@@ -54,6 +54,9 @@ const mutations = {
     },
     [types.SET_INVOICE] : (state , { data }) => {
         state.invoice = data;
+    },
+    [types.GET_BUYER] : (state , { data }) => {
+        state.buyer = data;
     },
 };
 

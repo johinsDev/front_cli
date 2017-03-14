@@ -12,4 +12,8 @@ export default  {
        localStorage.setItem(item , JSON.stringify(data));
         return cb(data);
     },
+    getData: function ( item , cb) {
+        let data = localStorage.getItem(item);
+        return cb( JSON.stringify(data));
+    },
 }
