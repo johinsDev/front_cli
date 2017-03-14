@@ -5,3 +5,6 @@ export const GET_USER = 'GET_USER'
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const SET_TOKEN = 'SET_TOKEN'
 export const GET_TOKEN = 'GET_TOKEN'
+export const SET_BUYER = 'SET_BUYER'
+export const SET_INVOICE = 'SET_INVOICE'
+

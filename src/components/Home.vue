@@ -20,6 +20,7 @@
             </md-tabs>
         </div>
     </section>
+
 </template>
 
 <script>
@@ -30,7 +31,8 @@
             added: 'getTicket'
         }),
         methods: mapActions([
-            'add'
+            'add',
+            'next'
         ]),
         created() {
             this.$store.dispatch('getAllTickets'),

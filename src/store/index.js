@@ -5,6 +5,7 @@ import * as getters from './getters'
 import * as state from './states'
 import tickets from './modules/ticket'
 import auth from './modules/auth'
+import payment from './modules/payment'
 
 import * as types from './mutation-types'
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     getters,
     modules: {
         tickets,
-        auth
+        auth,
+        payment
     }
 })
