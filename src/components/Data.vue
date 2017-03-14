@@ -41,36 +41,22 @@
             <button>Enviar datos</button>
         </form>
     </div>
-    {{ buyerista | json }}
 </template>
 
 <script>
     import {mapActions , mapGetters} from 'vuex'
     export default{
-        data() {
-            return {
-                buyer: {
-                    name: '',
-                    last_name: '',
-                    cc: '',
-                    license: '',
-                    email: '',
-                },
-                invoice:{
-                    name: '',
-                    last_name: '',
-                    cc: '',
-                    license: '',
-                    email: '',
-                }
-            }
-        },
         methods: mapActions({
             doPayment: 'setDataPayment'
         }),
         computed: mapGetters({
-            buyerista: 'getBuyer'
+            buyer: 'getBuyer',
+            invoice: 'getInvoice'
         }),
+        created () {
+            this.$store.dispatch('getBuyer'),
+            this.$store.dispatch('getInvoice')
+        },
         beforeRouteEnter (to, from, next) {
             next(vm => {
                 if ( vm.$store.state.tickets.added ){

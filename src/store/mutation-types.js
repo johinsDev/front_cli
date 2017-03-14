@@ -8,4 +8,5 @@ export const GET_TOKEN = 'GET_TOKEN'
 export const SET_BUYER = 'SET_BUYER'
 export const GET_BUYER = 'GET_BUYER'
 export const SET_INVOICE = 'SET_INVOICE'
+export const GET_INVOICE = 'GET_INVOICE'
 

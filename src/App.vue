@@ -5,6 +5,7 @@
         <router-link to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
         <router-link to="/me" v-if="authenticate">Perfil</router-link>
         <router-link to="/payment" v-if="authenticate">Pagar</router-link>
+        <router-link to="/confirmation" v-if="authenticate">Confirmacion de pago</router-link>
         <a @click="logout" v-if="authenticate">Cerrar sesion</a>
         <hr>
         <ul>

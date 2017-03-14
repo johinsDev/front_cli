@@ -14,6 +14,6 @@ export default  {
     },
     getData: function ( item , cb) {
         let data = localStorage.getItem(item);
-        return cb( JSON.stringify(data));
+        return cb(JSON.parse(data));
     },
 }

@@ -1,11 +1,24 @@
 import Payment from '../../services/Payment'
 import * as types from '../mutation-types'
+import redirect from '../../main'
 
 //states initial
 
 const state = {
-    buyer: [],
-    invoice: []
+    buyer: {
+        name: '',
+        last_name: '',
+        cc: '',
+        license: '',
+        email: '',
+    },
+    invoice: {
+        name: '',
+        last_name: '',
+        cc: '',
+        license: '',
+        email: '',
+    }
 };
 
 //getters
@@ -19,12 +32,18 @@ const getters = {
 //actions
 
 const actions = {
+    getInvoice ({ commit } , data) {
+        Payment.getData('invoice' , (data) => {
+            commit(types.GET_INVOICE , data )
+        })
+    },
     getBuyer ({ commit } , data) {
-        Payment.getData(data , 'buyer' , (data) => {
+        Payment.getData('buyer' , (data) => {
             commit(types.GET_BUYER , data )
         })
     },
     setBuyer ({ commit } , data) {
+        console.log(data);
         Payment.setData(data , 'buyer' , (data) => {
             commit(types.SET_BUYER , data )
         })
@@ -34,15 +53,10 @@ const actions = {
             commit(types.SET_BUYER , data )
         })
     },
-    setBuyer ({ commit } , data) {
-        Payment.setData(data , 'buyer' , (data) => {
-            commit(types.SET_BUYER , data )
-        })
-    },
     setDataPayment ({ commit , dispatch} , data) {
-
         dispatch('setBuyer' , data.buyer);
-        dispatch('setBuyer' , data.invoice);
+        dispatch('setInvoice' , data.invoice);
+        redirect.push({path: 'confirmation'})
     },
 };
 
@@ -55,8 +69,15 @@ const mutations = {
     [types.SET_INVOICE] : (state , { data }) => {
         state.invoice = data;
     },
-    [types.GET_BUYER] : (state , { data }) => {
-        state.buyer = data;
+    [types.GET_BUYER] : (state , data) => {
+        if (data){
+            state.buyer = data;
+        }
+    },
+    [types.GET_INVOICE] : (state , data) => {
+        if (data){
+            state.invoice = data;
+        }
     },
 };
 
