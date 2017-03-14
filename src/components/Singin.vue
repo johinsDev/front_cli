@@ -72,7 +72,7 @@
     margin: 40px auto;
   width: 100%; 
 
- height: 95vh;
+ 
 
 }
 .container_form{
@@ -80,7 +80,7 @@
     background:white;
     max-width: 500px;
     margin: 100px auto;
-    height: 500px;
+  
 }
 .form{
     width: 80%;
