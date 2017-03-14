@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
-import * as state from './states'
 import tickets from './modules/ticket'
 import auth from './modules/auth'
 import data from './modules/data'
 import card from './modules/card'
+import checkout from './modules/checkout'
 
 import * as types from './mutation-types'
 
@@ -33,6 +33,7 @@ export default new Vuex.Store({
         tickets,
         auth,
         data,
-        card
+        card,
+        checkout
     }
 })

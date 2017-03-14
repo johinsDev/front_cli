@@ -6,8 +6,8 @@
     <section>
         <div >
             <div class="boleta">
-                <p>Boleta: </p>
-                <p>Precio: </p>
+                <p>Boleta: {{ ticket.name }}</p>
+                <p>Precio: {{ ticket.price }}</p>
             </div>
             <div class="container_form">
                 Datos Personales
@@ -66,6 +66,7 @@
                     <p>Datos de Facturacion</p>
                     <button class="button">Enviar datos</button>
                 </form>
+
             </div>
         </div>
     </section>
@@ -79,11 +80,13 @@
         }),
         computed: mapGetters({
             buyer: 'getBuyer',
-            invoice: 'getInvoice'
+            invoice: 'getInvoice',
+            ticket: 'getTicket'
         }),
         created () {
             this.$store.dispatch('getBuyer'),
-            this.$store.dispatch('getInvoice')
+            this.$store.dispatch('getInvoice'),
+            this.$store.dispatch('getTicket')
         },
         beforeRouteEnter (to, from, next) {
             next(vm => {

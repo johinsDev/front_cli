@@ -26,7 +26,7 @@ const actions = {
     },
     getTicket ({ commit }) {
         ticket.findOne(ticket => {
-            commit(types.GET_TICKET , {ticket})
+            commit(types.GET_TICKET , ticket)
         })
     },
 };
@@ -37,7 +37,7 @@ const mutations = {
     [types.RECEIVE_TICKETS] : (state , { tickets }) => {
         state.all = tickets;
     },
-    [types.GET_TICKET] : (state , {ticket}) => {
+    [types.GET_TICKET] : (state , ticket) => {
       state.added = ticket
     },
     [types.ADD_TICKET] (state, { id }) {

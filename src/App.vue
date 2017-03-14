@@ -2,9 +2,13 @@
     <section>
         <div class="logo">
             <img src="./assets/logoClic.svg" alt="logo">
+            <div v-if="authenticate">
+                HOla {{ user.email }}
+            </div>
         </div>
+
         <nav>
-            <router-link exact to="/">Boletas</router-link>
+            <router-link exact to="/">Boletas </router-link>
             <router-link to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
             <router-link to="/me" v-if="authenticate">Perfil</router-link>
             <router-link to="/payment" v-if="authenticate">Pagar</router-link>
@@ -15,7 +19,9 @@
                     <li v-for="error in errors">{{ error.error }}</li>
                 </ul>
             </div>
-
+            <div v-if="checkoutStatus">
+                Pago exitoso felicidades
+            </div>
             <router-view></router-view>
         </nav>
     </section>
@@ -25,14 +31,15 @@
     import { mapGetters, mapState, mapActions } from 'vuex'
     export default {
         computed: {
-            ...mapState(['authenticate' , 'token']),
-            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate'}),
+            ...mapState(['authenticate' , 'token' , 'checkoutStatus']),
+            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus'}),
         },
         methods: mapActions([
             'logout'
         ]),
         created() {
             this.$store.dispatch('getToken')
+            this.$store.dispatch('getUser')
         },
     }
 
