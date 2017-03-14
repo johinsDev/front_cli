@@ -1,11 +1,19 @@
 <template>
     <div>
         <h1>Profile</h1>
+        <button v-if="added"  @click="next('/payment')">Siguiente</button>
     </div>
 </template>
 
 <script>
+    import { mapActions , mapGetters} from 'vuex'
     export default{
+        computed: mapGetters({
+            added: 'getTicket'
+        }),
+        methods: mapActions([
+            'next'
+        ]),
         created() {
             this.$store.dispatch('getToken')
         },

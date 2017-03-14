@@ -4,7 +4,7 @@
             {{ ticket.name }} - {{ ticket.price }}
             <button @click="add(i)" v-show="added != i">Adquirir Esta boleta</button>
         </li>
-        <p>{{ added }}</p>
+        <button v-if="added" @click="next('/singin')">Siguiente</button>
     </ul>
 </template>
 <style>
@@ -21,7 +21,8 @@
             added: 'getTicket'
         }),
         methods: mapActions([
-            'add'
+            'add',
+            'next'
         ]),
         created () {
             this.$store.dispatch('getAllTickets'),
