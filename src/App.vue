@@ -4,18 +4,17 @@
             <img src="./assets/logoClic.svg" alt="logo">
         </div>
         <nav>
-            <router-link exact to="/">Boletas</router-link>
-            <router-link to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
-            <router-link to="/me" v-if="authenticate">Perfil</router-link>
-            <router-link to="/payment" v-if="authenticate">Pagar</router-link>
-            <router-link to="/confirmation" v-if="authenticate">Confirmacion de pago</router-link>
+            <router-link class="link"  exact to="/">Boletas</router-link>
+            <router-link class="link" to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
+            <router-link class="link" to="/me" >Perfil</router-link>
+            <router-link class="link" to="/payment" >Datos de Compra</router-link>
+            <router-link class="link" to="/confirmation">Confirmacion de pago</router-link>
             <a @click="logout" v-if="authenticate">Cerrar sesion</a>
-            <div class="errores">
+            <div class="errores" v-show="error">
                 <ul>
                     <li v-for="error in errors">{{ error.error }}</li>
                 </ul>
             </div>
-
             <router-view></router-view>
         </nav>
     </section>
@@ -41,44 +40,59 @@
 
 <style >
 /*Estilos menu superior*/
+.router-link-active{
+   text-decoration: underline;
+   color: black !important;
+   background: white;
+   border: 5px solid #000;
+}
     nav {
-        padding: 40px;
+        padding: 30px;
         height: 50px;
-        background: #55FFA9;
+        background: linear-gradient(to right, #feff01 -15%, #26ffd9 15%, #feff01, #feff01, #feff01, #26ffd9 85%, #feff01 115%);
         text-align: center;
         font-style: inherit;
         font-weight: 900;
         box-shadow:  0px 1px grey;
         cursor: pointer;
+        text-transform: uppercase;
+        
     }
     /*estilos logo*/
     .logo{
         height: 50px;
-        background: #55FFA9;
+        background: linear-gradient(to right, #feff01 -15%, #26ffd9 15%, #feff01, #feff01, #feff01, #26ffd9 85%, #feff01 115%);
     }
     .logo img{
-        width: 300px;
+        width: 200px;
         margin: 20px auto;
+       
     }
- 
+ /*/logo*/
+/*estilos rutas*/
     .link {
-        margin: auto 40px;
-        font-size: 25px;
+        margin: auto 15px;
+        font-size:20px;
         cursor: pointer;
-        color: black !important;
+        
     }
-    
+    .md-theme-default a:not(.md-button){
+        color: rgba(0,0,0, 0.3) ;
+    }
     .link:hover {
         color: white;
+        text-decoration: none;
     }
     .errores{
         background: red;
     }
+/*estilos rutas*/
+
     /*estilos Botones*/
    .button {
   
-	background: #f3465c;
-	color:#fff;
+	background: none;
+	color:#000;
 	display:inline-block;
 	font-size:1.15em;
 	padding:10px 0;
@@ -87,10 +101,25 @@
 	text-decoration:none;
     cursor: pointer;
     border: none;    
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px grey;
     font-style: inherit;
     font-weight: 900;
     text-transform: uppercase;
+    margin-top: 40px;
+    margin-bottom: 0;
+    border: 5px solid #000;
+
+}
+@media screen and (min-width: 1000px){
+    nav{
+        padding: 40px;
+        height: 30px;
+      
+    }
+   
+    .logo img{
+        width: 300px;
+        margin: 20px auto;
+       
+    }
 }
 </style>

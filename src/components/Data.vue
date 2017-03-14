@@ -6,8 +6,10 @@
     <section>
         <div >
             <div class="boleta">
-                <p>Boleta: </p>
-                <p>Precio: </p>
+                <p>Datos seleccionados para la compra</p>
+                <p>Boleta: {{ticket.name}} </p>
+                <p>Precio: {{ticket.price}}</p>
+                <p>Etapa: 1</p>
             </div>
             <div class="container_form">
                 Datos Personales
@@ -54,7 +56,7 @@
                         <md-input type="text" id="cc" v-model="invoice.cc"></md-input>
                     </md-input-container>
 
-                    <md-input-container>
+                    <md-input-container v-if="ticket.id == 4 ">
                         <label>Carnet Estudiantil</label>
                         <md-input type="text" id="license" v-model="invoice.license"></md-input>
                     </md-input-container>
@@ -63,10 +65,15 @@
                         <label>Email</label>
                         <md-input type="text" id="email" v-model="invoice.email"></md-input>
                     </md-input-container>
-                    <p>Datos de Facturacion</p>
-                    <button class="button">Enviar datos</button>
+                    
+                    <button class="button">Ir a pagar</button>
                 </form>
             </div>
+        </div>
+       
+         <div class="logos_inferiores">
+            <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
+                alt="">
         </div>
     </section>
 </template>
@@ -79,19 +86,18 @@
         }),
         computed: mapGetters({
             buyer: 'getBuyer',
-            invoice: 'getInvoice'
+            invoice: 'getInvoice',
+            ticket: 'getTicket'
         }),
         created () {
             this.$store.dispatch('getBuyer'),
-            this.$store.dispatch('getInvoice')
+            this.$store.dispatch('getInvoice'),
+            this.$store.dispatch('getTicket')
+            
         },
         beforeRouteEnter (to, from, next) {
             next(vm => {
-                if (vm.$store.state.tickets.added) {
-                    !vm.$store.state.auth.authenticate ? next() : next('/payment')
-                } else {
-                    next('/')
-                }
+                !vm.$store.state.auth.authenticate ? next('/singin') : next('')
             })
         },
     }
@@ -101,7 +107,9 @@
 <style  scoped>
 
 .boleta{
-   box-shadow: 0px 0px 3px grey;
+    
+    background: white;
+    border: 5px solid #000;
    max-width: 800px;
    margin: 40px auto;
    font-size: 1.5em;
@@ -109,7 +117,7 @@
 }
 
 .container_form{
-    box-shadow: 0px 0px 3px grey;
+    border: 5px solid #000;
     background:white;
     max-width: 800px;
     margin: 50px auto;
@@ -119,7 +127,15 @@
     width: 80%;
     margin:  auto;
 }
-
-
+.button{
+    margin-bottom: 15px; 
+}
+ /*logos*/
+    .logos_inferiores {
+        border-top: 2px solid #f3465c;
+        background: white;
+        position: absolute;
+        width: 95%;
+    }
 
 </style>

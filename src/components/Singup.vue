@@ -8,10 +8,6 @@
                   <a href=""><i class="fa fa-google" aria-hidden="true"></i></a>                                   
                 </div>-->
                 <form class="form"  @submit.prevent="singin({email, password})">
-                    <md-input-container >
-                        <label>nombre</label>
-                        <md-input  v-model="nombre" type="text" maxlength="20"></md-input>
-                    </md-input-container>
                     <md-input-container type="text" >
                         <label>email</label>
                         <md-textarea v-model="email" maxlength="70"></md-textarea>
@@ -25,12 +21,15 @@
                    <button class="button">Registrarse</button>
                 </form> 
              <div class="footer_form">
-                Y tienes cuenta? <router-link class="link" to="/singin" v-if="!authenticate">Inicia sesión</router-link>
+                Ya tienes cuenta? <router-link  to="/singin" v-if="!authenticate">Inicia sesión</router-link>
             </div>   
                   
             </div>
            
-        
+        <div class="logos_inferiores">
+            <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
+                alt="">
+        </div>
     </section>
 </template>
 
@@ -58,48 +57,60 @@
     }
 </script>
 <style  scoped>
-
-.redes  {
+  /*.redes  {
     background: white;
-    height: 100px;
+    height: 80px;
     text-align: center;
+}
+.redes a{
+    display: block;
 }
 .fa-google,.fa-facebook-square{
     color: black;
     font-size: 40px; 
     margin: 30px ;
-}
-.container h2{
-    text-align: center;
-    font-size: 20px;
-    margin:10px auto;
-    text-decoration: underline;
+   
+}*/
     
-}
-
-.container_form{
-    box-shadow: 0px 0px 3px grey;
-    background:white;
-    max-width: 500px;
-    margin: 100px auto;
-     height: 50vh;
-  
-}
-.form{
-    width: 80%;
-    margin:  auto;
-}
-/*botones*/
-.btnIngresar{
-    margin: 30px auto;
-    width:100%;  
-}
-
-/*footer del formulario*/
-.footer_form{
-
-    width: 50%;
-    margin: auto;
-}
-
+    .container h2 {
+        text-align: center;
+        font-size: 20px;
+        margin: 10px auto;
+        text-decoration: underline;
+    }
+    
+    
+    .container_form {
+        border: 5px solid #000;
+        background: white;
+        max-width: 500px;
+        margin: 100px auto;
+        height: 500px;
+        
+       
+    }
+    /*campos formulario*/
+    .form {
+        width: 80%;
+        padding: 100px 0 50px 70px;
+    }
+   
+    /*footer del formulario*/
+    
+    .footer_form {
+        width: 50%;
+        margin: auto;
+    }
+    /*logos*/
+    .logos_inferiores {
+          margin-top: 90px; 
+        border-top: 2px solid #f3465c;     
+        position: absolute;
+        width: 95%;
+    }
+    @media screen and (max-width:600px){
+        .container_form{
+            height: 50vh;
+        }
+    }
 </style>

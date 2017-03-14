@@ -1,23 +1,34 @@
 <template>
-
     <section>
-        <div class="container">
-            <md-tabs md-fixed class="tabs">
-                <md-tab class="tab" id="movies" md-label="Etapa 1">
+         <div class="container">          
+            <md-tabs md-centered class="tabs">
+                <md-tab class="tab"  md-label="Etapa 1">
                     <div class="boletas">
+                        <p>Fecha:</p>
                         <ul>
                             <li v-for="(ticket , i) in tickets" :class="added == i ? 'seleccion' : ''">
                                 {{ ticket.name }} ${{ ticket.price }}           
                                <md-radio v-on:change="add(i)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>                            
-                            </li>
-                            
+                            </li>                            
                         </ul>
                     </div>
                 </md-tab>
                 <md-tab md-label="Etapa 2">
-                    <h1>no disponible</h1>
+                     <div class="boletas">
+                        <ul>
+                            <li v-for="(ticket , i) in tickets" :class="added == i ? 'seleccion' : ''">
+                                {{ ticket.name }} ${{ ticket.price }}           
+                               <md-radio v-on:change="add(i)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>                            
+                            </li>                            
+                        </ul>
+                    </div>
                 </md-tab>
             </md-tabs>
+            <button @click="next('/singin')" class="button">Siguiente</button>
+        
+        <div class="logos_inferiores">
+            <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4" alt="">
+        </div>
         </div>
     </section>
 
@@ -43,35 +54,50 @@
 </script>
 
 <style scoped>
+
 ul{
     padding: 0;
 }
    .seleccion{
-       background: #2ecc71;
-       color: white;
+       background: linear-gradient(to bottom, #ef167d, #ffc902);
+       color: white;     
    }
-    .container {
-        background: #ACFF97;
+    .logos_inferiores{
+        margin-top: 90px; 
+    border-top: 2px solid #f3465c;
+    position: absolute;
+    width: 90%;
+    }
+.container {
         padding: 40px;
         background: #fff;
-         margin: 40px auto;
-    
+         margin: 40px auto;        
     }
-     .tabs{
+.tabs{
        margin: auto;     
         width: 600px;
+        border: 5px solid #000;
+        height: 500px;  
     }
- 
-    .boletas {
-        box-shadow: 0px 0px 3px grey;
-        max-width: 600px;
+    
+.boletas {
+
         height: 300px;
+       
     }
   
     .boletas ul li {
         list-style: none;
         font-size: 1.2rem;
-     padding: 50px 50px 50px 50px;
+         padding: 40px ;
     }
-       
+    @media screen and (max-width: 900px){
+        .boletas {    
+        height: 420px;      
+    }
+     .logos_inferiores{
+   
+    width: 95%;
+    }
+    }   
 </style>

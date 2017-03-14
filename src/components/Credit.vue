@@ -1,21 +1,34 @@
 <template>
-    <div>
-        <form action="" @submit.prevent="create(card)">
-            <input type="text" placeholder="Nombre tarjeta de credito" v-model="card.name">
-            <br>
-            <input type="text" placeholder="Numero de tarjeta de credito" v-model="card.number">
-            <br>
-            <input type="text" placeholder="Fecha de vencimiento" v-model="card.expirationDate">
-            <br>
-            <input type="text" placeholder="Numero de identificacion" v-model="card.identificationNumber">
-            <br>
-            <input type="text" placeholder="Cvv">
-            <br>
-            <button>Proceder al pago</button>
+    <section>
+           <div class="container_form">
+        <form class="form" @submit.prevent="create(card)">
+            <md-input-container>
+                        <label>Nombre titular de la tarjeta</label>
+                        <md-input type="text" id="names" v-model="card.name"></md-input>
+              </md-input-container>
+               <md-input-container>
+                        <label>Numero tarjeta</label>
+                        <md-input type="text" id="names" v-model="card.number"></md-input>
+              </md-input-container>
+                 <md-input-container>
+                        <label>Fecha vencimiento</label>
+                        <md-input type="text" id="names" v-model="card.expirationDate"></md-input>
+              </md-input-container>
+                 <md-input-container>
+                        <label>Numero de identificacion</label>
+                        <md-input type="text" id="names" v-model="card.identificationNumber"></md-input>
+              </md-input-container>
+                 <md-input-container>
+                        <label>cvv</label>
+                        <md-input type="text" id="names"></md-input>
+              </md-input-container>
+           
+            <button class="button">Proceder al pago</button>
         </form>
     </div>
+</section>
 </template>
-/
+
 <script>
 
     //El proceso e sun componete para la tarjeta es decir apra enviar la tarjeta a token
@@ -45,3 +58,17 @@
         }),
     }
 </script>
+
+<style scoped>
+    .container_form{
+   
+    background:white;
+    max-width: 800px;
+    margin: 50px auto;
+
+}
+.form{
+    width: 80%;
+    margin:  auto;
+}
+</style>
