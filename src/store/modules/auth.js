@@ -35,8 +35,10 @@ const mutations = {
 const actions = {
     login({commit , dispatch} , data) {
 
-        user.login(data , (user) => {
-            commit(types.GET_USER , {user})
+        user.login(data , (data) => {
+            commit(types.GET_USER , data.user);
+            dispatch('setToken' , data.token)
+            redirect.push({path: 'me'})
         } , (err) => {
             dispatch('setErrors' , {errors: err.data})
         });
@@ -61,6 +63,13 @@ const actions = {
             }
             commit(types.SET_TOKEN , token)
         });
+    },
+    logout({commit , state}){
+        user.logout(() => {
+            commit(types.SET_TOKEN , '')
+            state.authenticate = false;
+        });
+
     }
 };
 

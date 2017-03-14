@@ -22,5 +22,9 @@ export default  {
         let token = localStorage.getItem('token')
         return cb(token);
     },
+    logout(cb){
+        localStorage.removeItem('token')
+        return cb();
+    }
 
 }
