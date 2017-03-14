@@ -15,18 +15,16 @@
     </md-table-row>
   </md-table-body>
 </md-table>
+<!--slider con los modos de pago-->
 <p>Modo de pago</p>
     <md-tabs md-centered class="tabs">
-  <md-tab  md-icon="card">
+
+  <md-tab   md-icon="payment">
    <credit-card></credit-card>
   </md-tab>
 
-  <md-tab md-icon="card">
-    debito
-  </md-tab>
-
-  <md-tab  md-icon="books">
-   efecty- baloto
+  <md-tab md-icon="books">
+    <img src="../assets/pse.jpg" alt="">
   </md-tab>
 
 </md-tabs>
@@ -58,7 +56,7 @@
        margin: auto;     
         width: 600px;
         border: 5px solid #000;
-        height: 500px;
+        height: 700px;
        
     }
     .container {        

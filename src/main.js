@@ -13,10 +13,11 @@ const router = new VueRouter({
 
 
 Vue.use(VueMaterial);
+
 Vue.material.registerTheme('default', {
   primary: 'black',
   accent: 'black',
-  warn: 'red',
+  warn: 'black',
   background: 'white'
 })
 new Vue({

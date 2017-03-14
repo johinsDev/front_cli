@@ -46,8 +46,8 @@
             'next'
         ]),
         created() {
-            this.$store.dispatch('getAllTickets'),
-                this.$store.dispatch('getTicket')
+                    this.$store.dispatch('getAllTickets'),
+                    this.$store.dispatch('getTicket')
         },      
     }
 
@@ -59,11 +59,11 @@ ul{
     padding: 0;
 }
    .seleccion{
-       background: linear-gradient(to bottom, #ef167d, #ffc902);
-       color: white;     
+       border: 2px solid black;
+        
    }
     .logos_inferiores{
-        margin-top: 90px; 
+    margin-top: 90px; 
     border-top: 2px solid #f3465c;
     position: absolute;
     width: 90%;

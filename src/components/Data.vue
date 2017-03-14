@@ -6,6 +6,7 @@
     <section>
         <div >
             <div class="boleta">
+
                 <p>Datos seleccionados para la compra</p>
                 <p>Boleta: {{ticket.name}} </p>
                 <p>Precio: {{ticket.price}}</p>
@@ -68,6 +69,7 @@
                     
                     <button class="button">Ir a pagar</button>
                 </form>
+
             </div>
         </div>
        
@@ -93,7 +95,6 @@
             this.$store.dispatch('getBuyer'),
             this.$store.dispatch('getInvoice'),
             this.$store.dispatch('getTicket')
-            
         },
         beforeRouteEnter (to, from, next) {
             next(vm => {

@@ -2,18 +2,27 @@
     <section>
         <div class="logo">
             <img src="./assets/logoClic.svg" alt="logo">
+            <div v-if="authenticate">
+                Hola {{ user.email }}
+            </div>
         </div>
+
         <nav>
             <router-link class="link"  exact to="/">Boletas</router-link>
             <router-link class="link" to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
             <router-link class="link" to="/me" >Perfil</router-link>
             <router-link class="link" to="/payment" >Datos de Compra</router-link>
             <router-link class="link" to="/confirmation">Confirmacion de pago</router-link>
+
             <a @click="logout" v-if="authenticate">Cerrar sesion</a>
             <div class="errores" v-show="error">
                 <ul>
                     <li v-for="error in errors">{{ error.error }}</li>
                 </ul>
+            </div>
+
+            <div v-if="checkoutStatus">
+                Pago exitoso felicidades
             </div>
             <router-view></router-view>
         </nav>
@@ -24,14 +33,15 @@
     import { mapGetters, mapState, mapActions } from 'vuex'
     export default {
         computed: {
-            ...mapState(['authenticate' , 'token']),
-            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate'}),
+            ...mapState(['authenticate' , 'token' , 'checkoutStatus']),
+            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus'}),
         },
         methods: mapActions([
             'logout'
         ]),
         created() {
             this.$store.dispatch('getToken')
+            this.$store.dispatch('getUser')
         },
     }
 
@@ -49,7 +59,7 @@
     nav {
         padding: 30px;
         height: 50px;
-        background: linear-gradient(to right, #feff01 -15%, #26ffd9 15%, #feff01, #feff01, #feff01, #26ffd9 85%, #feff01 115%);
+        background: linear-gradient(to bottom, #ef167d , #ffc902);
         text-align: center;
         font-style: inherit;
         font-weight: 900;
@@ -61,7 +71,7 @@
     /*estilos logo*/
     .logo{
         height: 50px;
-        background: linear-gradient(to right, #feff01 -15%, #26ffd9 15%, #feff01, #feff01, #feff01, #26ffd9 85%, #feff01 115%);
+         background:#ef167d ;
     }
     .logo img{
         width: 200px;
@@ -117,7 +127,7 @@
     }
    
     .logo img{
-        width: 300px;
+        width: 200px;
         margin: 20px auto;
        
     }

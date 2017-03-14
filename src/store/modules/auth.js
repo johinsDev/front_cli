@@ -25,10 +25,11 @@ const mutations = {
         state.user = user;
         state.authenticate = true;
     },
-    [types.SET_USER] : (state , user) => {
-        state.user = user;
-        state.authenticate = true;
-        localStorage.setItem('user' , JSON.stringify(user))
+    [types.SET_USER] : (state , user ) => {
+        state.user = JSON.parse(user);
+
+        localStorage.setItem('user' , user);
+
         if (!user){
             localStorage.removeItem('user');
         }
@@ -42,9 +43,8 @@ const mutations = {
 
 const actions = {
     login({commit , dispatch} , data) {
-
         user.login(data , (data) => {
-            commit(types.SET_USER , data.user);
+            commit(types.SET_USER ,  JSON.stringify(data.user));
             dispatch('setToken' , data.token);
             redirect.push({path: 'me'})
         } , (err) => {
@@ -53,7 +53,7 @@ const actions = {
     },
     register({commit , dispatch} ,data) {
         user.register(data , (data) => {
-            commit(types.GET_USER , data.user);
+            commit(types.SET_USER , JSON.stringify(data.user));
             dispatch('setToken' , data.token)
         } , (err) => {
             dispatch('setErrors' , {errors: err.data})
@@ -66,6 +66,7 @@ const actions = {
     },
     getToken({commit , state}){
         user.getToken((token) => {
+
             if (token){
                 state.authenticate = true;
             }
@@ -79,8 +80,13 @@ const actions = {
             state.authenticate = false;
             redirect.push({path: '/'});
         });
+    },
+    getUser({commit}){
+        user.get((user) => {
+            commit(types.SET_USER , user);
+        });
+    },
 
-    }
 };
 
 export default {

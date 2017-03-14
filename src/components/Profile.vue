@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Profile</h1>
-        <button v-if="added"  @click="next('/payment')">Siguiente</button>
+        <button class="button" v-if="added"  @click="next('/payment')">Siguiente</button>
     </div>
 </template>
 
