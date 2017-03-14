@@ -10,7 +10,21 @@ Vue.use(VueResource)
 export default  {
     login: function (data , cb , cberror) {
         Vue.http.post(API.LOGIN_URL , data )
-            .then((response) =>  cb(response.data.user))
+            .then((response) =>  cb(response.data))
             .catch((err) => cberror(err))
+    },
+    register: function (data , cb ,cberror) {
+        Vue.http.post(API.SIGNUP_URL , data )
+            .then((response) =>  cb(response.data))
+            .catch((err) => cberror(err))
+    },
+    getToken(cb) {
+        let token = localStorage.getItem('token')
+        return cb(token);
+    },
+    logout(cb){
+        localStorage.removeItem('token')
+        return cb();
     }
+
 }

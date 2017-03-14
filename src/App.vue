@@ -1,64 +1,81 @@
 <template>
     <section>
-  
-<div>
-    
-</div>
-<md-menu md-align-trigger>
-  <md-button md-menu-trigger></md-button>
+        <md-toolbar class="md-medium">
+            <div class="md-toolbar-container">
+                <md-button class="md-icon-button">
+                    <md-icon>menu</md-icon>
+                </md-button>
 
-  <md-menu-content>
-    <md-menu-item>My Item 1</md-menu-item>
-  
-  </md-menu-content>
-</md-menu>
+                <h2 class="md-title" style="flex: 1;"></h2>
 
-<md-menu :md-offset-x="154" md-offset-y="12">
-  <md-button md-menu-trigger>usuario</md-button>
+                <md-button class="md-icon-button">
+                    <md-icon>search</md-icon>
+                </md-button>
 
-  <md-menu-content>
-    <md-menu-item>cerrar sesion</md-menu-item>
-    
-  </md-menu-content>
-</md-menu>
-       <nav>    
-         <router-link class="link" to="/">Boletas</router-link>
-        <router-link class="link" to="/singin">Registro</router-link>
-        <router-link class="link" to="/">Condiciones</router-link>
-        <router-link class="link" to="/">pagar</router-link>
-        <router-link class="link" to="/">confirmacion</router-link>
-        <router-view></router-view>
-       </nav>    
-        <!-- <ul>
-            <li v-for="error in errors">{{ error.error }}</li>
-        </ul>-->
+                <md-button class="md-icon-button">
+                    <md-icon>filter_list</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <nav>
+            <router-link class="link" exact to="/">Boletas</router-link>
+            <router-link class="link" to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
+            <router-link class="link" to="/me" v-if="authenticate">Perfil</router-link>
+            <router-link class="link" to="/payment" v-if="authenticate">Pagar</router-link>
+            <a @click="logout" v-if="authenticate">Cerrar sesion</a>
+            <div class="errores">
+                <ul>
+                    <li v-for="error in errors">{{ error.error }}</li>
+                </ul>
+            </div>
+
+            <router-view></router-view>
+        </nav>
+
     </section>
 </template>
 
 <script>
-    import { mapGetters } from  'vuex'
+    import { mapGetters, mapState, mapActions } from 'vuex'
     export default {
-        computed: mapGetters({
-            'errors': 'getErrors'
-        }),
+        computed: {
+            ...mapState(['authenticate' , 'token']),
+            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate'}),
+        },
+        methods: mapActions([
+            'logout'
+        ]),
+        created() {
+            this.$store.dispatch('getToken')
+        },
     }
+
 </script>
 
 
 <style scoped>
-nav{
-    padding: 40px;
-    height: 50px;
-    background: #3949AB;     
-    text-align: center;  
-}
-.link{
-    margin: auto 40px;
-    font-size: 25px;
-    cursor: pointer;
-    color: white !important;
-}
-.link:hover{
-    color: white;
-}
+    nav {
+        padding: 40px;
+        height: 50px;
+        background: #3F51B5;
+        text-align: center;
+    }
+    
+    nav a {
+        cursor: pointer;
+    }
+    
+    .link {
+        margin: auto 40px;
+        font-size: 25px;
+        cursor: pointer;
+        color: white !important;
+    }
+    
+    .link:hover {
+        color: white;
+    }
+    .errores{
+        background: red;
+    }
 </style>

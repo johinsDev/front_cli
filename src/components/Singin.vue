@@ -6,27 +6,27 @@
                  <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>                                                    
                   <a href=""><i class="fa fa-google" aria-hidden="true"></i></a>                                   
                 </div>
-                <form class="form" novalidate @submit.prevent="signin(email, password)">
-                    <md-input-container type="text" v-model="email">
+                <form class="form"  @submit.prevent="singin({email, password})">
+                    <md-input-container type="text" >
                         <label>email</label>
-                        <md-textarea maxlength="70"></md-textarea>
+                        <md-textarea v-model="email" maxlength="70"></md-textarea>
                     </md-input-container>
 
-                    <md-input-container type="password" v-model="password">
+                    <md-input-container >
                         <label>password</label>
-                        <md-input maxlength="20"></md-input>
+                        <md-input  v-model="password" type="password" maxlength="20"></md-input>
                     </md-input-container>
-                    <md-button class="md-raised md-primary btnIngresar">Ingresar</md-button>
+                   <!--<md-button class="md-raised md-primary btnIngresar" >Ingresar</md-button>-->
+                   <button class="button">ingresar</button>
                 </form> 
              <div class="footer_form">
                 <a href="#">¿Olvidaste tu contraseña?</a> 
-                <router-link class="link" to="/">Registrate</router-link>    
-            </div>   
-                  
-            </div>
-           
+                <router-link  to="/singup">Registrate</router-link>
+            </div>                 
+            </div>           
         </div>
     </section>
+
 </template>
 
 <script>
@@ -42,11 +42,19 @@
         methods: mapActions({
             singin: 'login'
         }),
-        beforeRouteEnter(to, from, next) {
+
+        created() {
+            this.$store.dispatch('getToken')
+        },
+        beforeRouteEnter (to, from, next) {
             next(vm => {
-                vm.$store.state.tickets.added ? next() : next('/')
+                if ( vm.$store.state.tickets.added ){
+                    !vm.$store.state.auth.authenticate ? next() : next('/me')
+                }else{
+                    next('/')
+                }
             })
-        }
+        },
     }
 
 </script>
@@ -71,7 +79,6 @@
 .container{
     margin: 40px auto;
   width: 100%; 
-
  
 
 }
@@ -80,7 +87,8 @@
     background:white;
     max-width: 500px;
     margin: 100px auto;
-  
+    height: 50vh;
+
 }
 .form{
     width: 80%;
@@ -97,5 +105,22 @@
 
     width: 50%;
     margin: auto;
+}
+.button {
+  
+	background:#3F51B5;
+	color:#fff;
+	display:inline-block;
+	font-size:1.15em;
+	margin:140px auto 40px;
+	padding:10px 0;
+	text-align:center;
+	width:200px;
+	text-decoration:none;
+    cursor: pointer;
+    border: none;    
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px grey;
+
 }
 </style>

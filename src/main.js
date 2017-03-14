@@ -11,10 +11,14 @@ const router = new VueRouter({
         routes
 });
 
+
 Vue.use(VueMaterial);
+
 new Vue({
         el: '#app',
         router,
         store,
         render: h => h(App)
 });
+
+export default router;
