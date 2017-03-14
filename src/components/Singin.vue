@@ -1,11 +1,11 @@
 <template>
     <section>
-        <div class="container">                   
+                        
             <div class="container_form">
-                <div class="redes">                                       
-                 <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>                                                    
-                  <a href=""><i class="fa fa-google" aria-hidden="true"></i></a>                                   
-                </div>
+                <!--<div class="redes">                                       
+                 <a href="#">INGRESAR CON <i class="fa fa-facebook-square" aria-hidden="true"></i></a>                                                    
+                  <a href="">INGRESAR CON<i class="fa fa-google" aria-hidden="true"></i></a>                                   
+                </div>-->
                 <form class="form"  @submit.prevent="singin({email, password})">
                     <md-input-container type="text" >
                         <label>email</label>
@@ -24,6 +24,8 @@
                 <router-link  to="/singup">Registrate</router-link>
             </div>                 
             </div>           
+        <div class="logos_inferiores">
+            <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4" alt="">
         </div>
     </section>
 
@@ -60,27 +62,28 @@
 </script>
 <style  scoped>
 
-.redes  {
+/*.redes  {
     background: white;
-    height: 100px;
+    height: 80px;
     text-align: center;
+}
+.redes a{
+    display: block;
 }
 .fa-google,.fa-facebook-square{
     color: black;
     font-size: 40px; 
     margin: 30px ;
-}
+   
+}*/
 .container h2{
     text-align: center;
     font-size: 20px;
     margin:10px auto;
     text-decoration: underline;
 }
-.container{
-    margin: 40px auto;
-  width: 100%; 
- 
-
+.logos_inferiores{
+ border-top: 2px solid #f3465c;
 }
 .container_form{
     box-shadow: 0px 0px 3px grey;
@@ -92,12 +95,7 @@
 }
 .form{
     width: 80%;
-    margin:  auto;
-}
-/*botones*/
-.btnIngresar{
-    margin: 30px auto;
-    width:100%;  
+    margin: 50px auto;
 }
 
 /*footer del formulario*/
@@ -106,21 +104,5 @@
     width: 50%;
     margin: auto;
 }
-.button {
-  
-	background:#3F51B5;
-	color:#fff;
-	display:inline-block;
-	font-size:1.15em;
-	margin:140px auto 40px;
-	padding:10px 0;
-	text-align:center;
-	width:200px;
-	text-decoration:none;
-    cursor: pointer;
-    border: none;    
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px grey;
 
-}
 </style>

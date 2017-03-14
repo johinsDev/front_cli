@@ -1,11 +1,12 @@
 <template>
+    
         <section>
-        <div class="container">                   
+                           
             <div class="container_form">
-                <div class="redes">                                       
+              <!--  <div class="redes">                                       
                  <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>                                                    
                   <a href=""><i class="fa fa-google" aria-hidden="true"></i></a>                                   
-                </div>
+                </div>-->
                 <form class="form"  @submit.prevent="singin({email, password})">
                     <md-input-container >
                         <label>nombre</label>
@@ -29,7 +30,7 @@
                   
             </div>
            
-        </div>
+        
     </section>
 </template>
 
@@ -73,20 +74,16 @@
     font-size: 20px;
     margin:10px auto;
     text-decoration: underline;
+    
 }
-.container{
-    margin: 40px auto;
-  width: 100%; 
-  
- 
 
-}
 .container_form{
     box-shadow: 0px 0px 3px grey;
     background:white;
     max-width: 500px;
     margin: 100px auto;
      height: 50vh;
+  
 }
 .form{
     width: 80%;
@@ -104,20 +101,5 @@
     width: 50%;
     margin: auto;
 }
-.button {
-	background:#3F51B5;
-	color:#fff;
-	display:inline-block;
-	font-size:1.15em;
-	margin:50px auto;
-	padding:10px 0;
-	text-align:center;
-	width:200px;
-	text-decoration:none;
-    cursor: pointer;
-    border: none;    
-    border-radius: 5px;
-    box-shadow: 0px 0px 3px grey;
 
-}
 </style>

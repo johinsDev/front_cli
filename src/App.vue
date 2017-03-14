@@ -1,22 +1,8 @@
 <template>
     <section>
-        <md-toolbar class="md-medium">
-            <div class="md-toolbar-container">
-                <md-button class="md-icon-button">
-                    <md-icon>menu</md-icon>
-                </md-button>
-
-                <h2 class="md-title" style="flex: 1;"></h2>
-
-                <md-button class="md-icon-button">
-                    <md-icon>search</md-icon>
-                </md-button>
-
-                <md-button class="md-icon-button">
-                    <md-icon>filter_list</md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
+        <div class="logo">
+            <img src="./assets/logoClic.svg" alt="logo">
+        </div>
         <nav>
             <router-link class="link" exact to="/">Boletas</router-link>
             <router-link class="link" to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
@@ -31,7 +17,7 @@
 
             <router-view></router-view>
         </nav>
-
+        
     </section>
 </template>
 
@@ -53,23 +39,33 @@
 </script>
 
 
-<style scoped>
+<style >
+/*Estilos menu superior*/
     nav {
         padding: 40px;
         height: 50px;
-        background: #3F51B5;
+        background: #55FFA9;
         text-align: center;
-    }
-    
-    nav a {
+        font-style: inherit;
+        font-weight: 900;
+        box-shadow:  0px 1px grey;
         cursor: pointer;
     }
-    
+    /*estilos logo*/
+    .logo{
+        height: 50px;
+        background: #55FFA9;
+    }
+    .logo img{
+        width: 300px;
+        margin: 20px auto;
+    }
+ 
     .link {
         margin: auto 40px;
         font-size: 25px;
         cursor: pointer;
-        color: white !important;
+        color: black !important;
     }
     
     .link:hover {
@@ -78,4 +74,23 @@
     .errores{
         background: red;
     }
+    /*estilos Botones*/
+   .button {
+  
+	background: #f3465c;
+	color:#fff;
+	display:inline-block;
+	font-size:1.15em;
+	padding:10px 0;
+	text-align:center;
+	width:200px;
+	text-decoration:none;
+    cursor: pointer;
+    border: none;    
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px grey;
+    font-style: inherit;
+    font-weight: 900;
+    text-transform: uppercase;
+}
 </style>
