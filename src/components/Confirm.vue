@@ -19,14 +19,17 @@
 <p>Modo de pago</p>
     <md-tabs md-centered class="tabs">
 
-  <md-tab   md-icon="payment">
+  <md-tab   md-label="Tarjeta Credito">
    <credit-card></credit-card>
   </md-tab>
 
-  <md-tab md-icon="work">
-    <img src="../assets/pse.jpg" alt="">
+  <md-tab md-label="PSE(Pago sucursal virtual)">
+    <img src="../../assets/pse.jpg" alt="">
   </md-tab>
-
+        <md-tab md-label="Efectivo">
+            <img src="../../assets/download.jpg" alt="">
+        </md-tab>
+        <
 </md-tabs>
 </div>
 <div class="logos_inferiores">

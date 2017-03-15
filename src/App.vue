@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="logo">
-            <img src="./assets/logoClic.svg" alt="logo">
+            <img src="../assets/logoClic.svg" alt="logo">
             <div v-if="authenticate">
                 Hola {{ user.email }}
             </div>
