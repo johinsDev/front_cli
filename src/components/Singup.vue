@@ -7,7 +7,7 @@
                  <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>                                                    
                   <a href=""><i class="fa fa-google" aria-hidden="true"></i></a>                                   
                 </div>-->
-                <form class="form"  @submit.prevent="singin({email, password})">
+                <form class="form"  @submit.prevent="singup({email, password})">
                     <md-input-container type="text" >
                         <label>email</label>
                         <md-textarea v-model="email" maxlength="70"></md-textarea>
