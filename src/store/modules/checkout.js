@@ -22,8 +22,8 @@ const actions = {
         commit(types.CHECKOUT_REQUEST);
         checkout.buyTicket(
             data,
-            () => commit(types.CHECKOUT_SUCCESS),
-            () => commit(types.CHECKOUT_FAILURE )
+            (response) => commit(types.CHECKOUT_SUCCESS ,response),
+            (error) => commit(types.CHECKOUT_FAILURE, error)
         )
     }
 };
@@ -35,13 +35,16 @@ const mutations = {
         state.checkoutStatus = null
     },
 
-    [types.CHECKOUT_SUCCESS] (state) {
-        state.checkoutStatus = 'successful'
-        redirect.push({path: '/'});
+    [types.CHECKOUT_SUCCESS] (state , data) {
+        state.checkoutStatus = 'successful';
+
+        console.log(data);
+        //redirect.push({path: '/'});
     },
 
-    [types.CHECKOUT_FAILURE] (state, { savedCartItems }) {
+    [types.CHECKOUT_FAILURE] (state , error ) {
         //si falla solo notificar
+        console.log('aqui esta fallando');
         state.checkoutStatus = 'failed';
     }
 };

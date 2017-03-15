@@ -94,8 +94,6 @@
              ticket: 'getTicket'
          }),
          created () {
-             this.$store.dispatch('getBuyer'),
-             this.$store.dispatch('getInvoice'),
              this.$store.dispatch('getTicket')
          },
          beforeRouteEnter (to, from, next) {

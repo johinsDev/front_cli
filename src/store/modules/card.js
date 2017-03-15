@@ -26,7 +26,11 @@ const actions = {
             dispatch('checkout' , {
                 credit_card: data.card.creditCardTokenId,
                 user: rootState.auth.user.UID,
-                ticket: localStorage.getItem('ticket')
+                ticket: localStorage.getItem('ticket'),
+                data:{
+                    buyer: rootState.data.buyer,
+                    invoice: rootState.data.invoice,
+                }
             })
 
         }, (error) => {

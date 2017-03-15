@@ -6,7 +6,6 @@
                 Hola {{ user.email }}
             </div>
         </div>
-
         <nav>
             <router-link class="link"  exact to="/">Boletas</router-link>
             <router-link class="link" to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
@@ -15,7 +14,7 @@
             <router-link class="link" to="/confirmation">Confirmacion de pago</router-link>
 
             <a @click="logout" v-if="authenticate">Cerrar sesion</a>
-            <div class="errores" v-show="error">
+            <div class="errores" v-show="errors">
                 <ul>
                     <li v-for="error in errors">{{ error.error }}</li>
                 </ul>
@@ -34,7 +33,7 @@
     export default {
         computed: {
             ...mapState(['authenticate' , 'token' , 'checkoutStatus']),
-            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus' , invoice: 'getInvoice'}),
+            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus' , buyer: 'getBuyer'}),
         },
         methods: mapActions([
             'logout'
@@ -42,7 +41,8 @@
         created() {
             this.$store.dispatch('getToken')
             this.$store.dispatch('getUser'),
-            this.$store.dispatch('getInvoice')
+            this.$store.dispatch('getInvoice'),
+            this.$store.dispatch('getBuyer')
         },
     }
 

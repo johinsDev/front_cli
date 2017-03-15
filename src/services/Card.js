@@ -15,9 +15,9 @@ Vue.http.interceptors.push(function(request, next) {
 });
 
 export default  {
-    create: function (data , cb , cbError) {
+    create: function (data , cb , error) {
         Vue.http.post(API.CARD_URL , data)
             .then((response) =>  cb(response.data))
-            .catch((err) => cbError(err.data))
+            .catch((err) => error(err))
     },
 }

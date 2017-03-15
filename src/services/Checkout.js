@@ -19,7 +19,7 @@ export default  {
     buyTicket: function (data , cb , cbError) {
         Vue.http.post(API.CHECKOUT_URL , data)
             .then((response) =>  cb(response.data))
-            .catch((err) => cbError(err.data))
+            .catch((error) => cbError(error))
     },
 }
 

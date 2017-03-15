@@ -55,7 +55,8 @@
             }
         },
         computed: mapGetters({
-           invoice: 'getInvoice'
+           invoice: 'getInvoice',
+            buyer: 'getBuyer'
         }),
         components: {
             creditCard
