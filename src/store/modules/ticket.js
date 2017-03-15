@@ -40,10 +40,10 @@ const mutations = {
     [types.GET_TICKET] : (state , ticket) => {
       state.added = ticket
     },
-    [types.ADD_TICKET] (state, { id }) {
-        const record = state.added == id;
+    [types.ADD_TICKET] (state,ticket) {
+        const record = state.added.id == ticket.id;
         if (!record) {
-            state.added = id
+            state.added = ticket
         }
     },
 };

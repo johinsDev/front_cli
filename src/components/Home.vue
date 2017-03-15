@@ -6,20 +6,20 @@
                     <div class="boletas">
                         <p>Fecha:</p>
                         <ul>
-                            <li v-for="(ticket , i) in tickets" :class="added == i ? 'seleccion' : ''">
-                                {{ ticket.name }} ${{ ticket.price }}           
-                               <md-radio v-on:change="add(i)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>                            
-                            </li>                            
+                            <li v-for="ticket in tickets.Etapa1" :class="added.id == ticket._id ? 'seleccion' : ''">
+                                {{ ticket.name }} ${{ ticket.price }}
+                               <md-radio v-on:change="add(ticket._id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
+                            </li>
                         </ul>
                     </div>
                 </md-tab>
                 <md-tab md-label="Etapa 2">
                      <div class="boletas">
                         <ul>
-                            <li v-for="(ticket , i) in tickets" :class="added == i ? 'seleccion' : ''">
-                                {{ ticket.name }} ${{ ticket.price }}           
-                               <md-radio v-on:change="add(i)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>                            
-                            </li>                            
+                            <li v-for="ticket in tickets.Etapa2" :class="added.id == ticket._id ? 'seleccion' : ''">
+                                {{ ticket.name }} ${{ ticket.price }}
+                                <md-radio v-on:change="add(ticket._id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
+                            </li>
                         </ul>
                     </div>
                 </md-tab>

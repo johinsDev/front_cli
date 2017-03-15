@@ -25,7 +25,7 @@ const actions = {
             commit(types.SET_CARD, data.card);
             dispatch('checkout' , {
                 credit_card: data.card.creditCardTokenId,
-                user: rootState.auth.user.uid,
+                user: rootState.auth.user.UID,
                 ticket: localStorage.getItem('ticket')
             })
 

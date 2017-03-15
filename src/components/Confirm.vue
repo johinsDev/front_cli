@@ -9,9 +9,9 @@
   </md-table-header>
 
   <md-table-body>
-    <md-table-row v-for="(row, index) in 5" :key="index">
-      <md-table-cell>nombre dato</md-table-cell>
-      <md-table-cell v-for="(col, index) in 1" :key="index" md-numeric>dato</md-table-cell>
+    <md-table-row v-for="(row, index) in invoice" :key="index">
+      <md-table-cell>{{ traslate[index] }}</md-table-cell>
+      <md-table-cell md-numeric>{{ row }}</md-table-cell>
     </md-table-row>
   </md-table-body>
 </md-table>
@@ -23,12 +23,11 @@
    <credit-card></credit-card>
   </md-tab>
 
-  <md-tab md-icon="books">
+  <md-tab md-icon="work">
     <img src="../assets/pse.jpg" alt="">
   </md-tab>
 
 </md-tabs>
-    
 </div>
 <div class="logos_inferiores">
             <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
@@ -39,15 +38,31 @@
 
 <script>
     import creditCard from './Credit.vue'
+    import {mapGetters} from 'vuex'
+
     export default{
+        data() {
+            return {
+                traslate: {
+                    name: 'Nombre',
+                    last_name: 'Apellido',
+                    cc: 'Identificacion',
+                    license: 'Carnet',
+                    email: 'Correro Electronico'
+                }
+            }
+        },
+        computed: mapGetters({
+           invoice: 'getInvoice'
+        }),
         components: {
             creditCard
         },
-     beforeRouteEnter (to, from, next) {
-            next(vm => {
-                !vm.$store.state.auth.authenticate ? next('/singin') : next('')
-            })
-        }
+         beforeRouteEnter (to, from, next) {
+                next(vm => {
+                    !vm.$store.state.auth.authenticate ? next('/singin') : next('')
+                })
+            }
     }
 </script>
 <style scoped>

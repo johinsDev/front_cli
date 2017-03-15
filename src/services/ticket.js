@@ -18,7 +18,11 @@ export default  {
 
    findOne: function (cb) {
     Vue.http.get(API.TIKECT_URL + '/' + window.localStorage.getItem('ticket'))
-        .then((response) =>  cb(response.data.ticket))
+        .then((response) => {
+            let ticket = response.data.ticket;
+            ticket['id'] = window.localStorage.getItem('ticket');
+            cb(ticket);
+        })
         .catch((err) => {
             console.log(err)
         })

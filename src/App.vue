@@ -34,14 +34,15 @@
     export default {
         computed: {
             ...mapState(['authenticate' , 'token' , 'checkoutStatus']),
-            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus'}),
+            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus' , invoice: 'getInvoice'}),
         },
         methods: mapActions([
             'logout'
         ]),
         created() {
             this.$store.dispatch('getToken')
-            this.$store.dispatch('getUser')
+            this.$store.dispatch('getUser'),
+            this.$store.dispatch('getInvoice')
         },
     }
 
