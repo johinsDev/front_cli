@@ -2,13 +2,18 @@
     <section>
          <div class="container">          
             <md-tabs md-centered class="tabs">
+
                 <md-tab class="tab"  md-label="Etapa 1">
                     <div class="boletas">
                         <p>Fecha:</p>
                         <ul>
                             <li v-for="ticket in tickets.Etapa1" :class="added.id == ticket._id ? 'seleccion' : ''">
                                 {{ ticket.name }} ${{ ticket.price }}
-                               <md-radio v-on:change="add(ticket._id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
+
+                                <h1>Cantidad: {{ num_tickets }}</h1>
+                                <button @click="plus()">Aumentar</button>
+                                <button @click="minus()">Reducir</button>
+                               <md-radio @change="add(ticket._id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
                             </li>
                         </ul>
                     </div>
@@ -18,14 +23,13 @@
                         <ul>
                             <li v-for="ticket in tickets.Etapa2" :class="added.id == ticket._id ? 'seleccion' : ''">
                                 {{ ticket.name }} ${{ ticket.price }}
-                                <md-radio v-on:change="add(ticket._id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
+                                <md-radio @change="add(ticket.id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
                             </li>
                         </ul>
                     </div>
                 </md-tab>
             </md-tabs>
-            <button @click="next('/singin')" class="button">Siguiente</button>
-        
+            <button @click="next('/payment')" class="button">Siguiente</button>
         <div class="logos_inferiores">
             <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4" alt="">
         </div>
@@ -39,16 +43,19 @@
     export default {
         computed: mapGetters({
             tickets: 'allTickets',
-            added: 'getTicket'
+            added: 'getTicket',
+            num_tickets: 'getNumTickets'
         }),
         methods: mapActions([
             'add',
-            'next'
+            'next',
+            'plus',
+            'minus'
         ]),
         created() {
-                    this.$store.dispatch('getAllTickets'),
-                    this.$store.dispatch('getTicket')
-        },      
+            this.$store.dispatch('getAllTickets'),
+            this.$store.dispatch('getTicket')
+        },
     }
 
 </script>
@@ -77,7 +84,7 @@ ul{
        margin: auto;     
         width: 600px;
         border: 5px solid #000;
-        height: 500px;  
+        height: 1000px;
     }
     
 .boletas {

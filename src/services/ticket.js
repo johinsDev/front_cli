@@ -26,6 +26,14 @@ export default  {
         .catch((err) => {
             console.log(err)
         })
-}
+    },
+    getNum: function (cb) {
+        let num = localStorage.getItem('num');
+        return cb(num)
+    },
+    setNum: function (num , cb) {
+        localStorage.setItem('num' , num);
+        return cb(num)
+    }
 
 }

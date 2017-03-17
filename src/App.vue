@@ -42,7 +42,8 @@
             this.$store.dispatch('getToken')
             this.$store.dispatch('getUser'),
             this.$store.dispatch('getInvoice'),
-            this.$store.dispatch('getBuyer')
+            this.$store.dispatch('getBuyer'),
+            this.$store.dispatch('getNumTickets')
         },
     }
 

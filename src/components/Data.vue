@@ -11,70 +11,18 @@
                 <p>Boleta: {{ticket.name}} </p>
                 <p>Precio: {{ticket.price}}</p>
                 <p>Etapa: 1</p>
+                <p>Cantidad: {{ quantity }}</p>
             </div>
             <div class="container_form">
                 Datos Personales
-                <form class="form" @submit.prevent="doPayment({ buyer , invoice })">
-                    <md-input-container>
-                        <label>Nombres</label>
-                        <md-input type="text" id="names" v-model="buyer.name"></md-input>
-                    </md-input-container>
-
-                    <md-input-container>
-                        <label>Apellidos</label>
-                        <md-input type="text" id="last_name" v-model="buyer.last_name"></md-input>
-                    </md-input-container>
-
-                    <md-input-container>
-                        <label>Dcomneto de identidad</label>
-                        <md-input type="number" id="cc" v-model="buyer.cc"></md-input>
-                    </md-input-container>
-
-
-
-                    <!-- <md-input-container>
-                         <label>Carnet Estudiantil</label>
-                         <md-input type="text" id="license" v-model="buyer.license"></md-input>
-                     </md-input-container>-->
-
-                     <md-input-container v-if="ticket.category=='estudiante'">
-                         <label>Carnet Estudiantil</label>
-                         <md-file v-model="buyer.license"></md-file>
-                     </md-input-container>
-
-                     <md-input-container>
-                         <label>Email</label>
-                         <md-input type="text" id="email" v-model="buyer.email"></md-input>
-                     </md-input-container>
-
-                     <p>Datos de Facturacion</p>
-
-                      <md-input-container>
-                         <label>Nombres</label>
-                         <md-input type="text" id="name" v-model="invoice.name"></md-input>
-                     </md-input-container>
-
-                     <md-input-container>
-                         <label>Apellidos</label>
-                         <md-input type="text" id="invoice.last_name" v-model="invoice.last_name"></md-input>
-                     </md-input-container>
-
-                     <md-input-container >
-                         <label>Documento de identidad</label>
-                         <md-input type="text" id="cc" v-model="invoice.cc"></md-input>
-                     </md-input-container>
-
-                     <md-input-container>
-                         <label>Email</label>
-                         <md-input type="text" id="email" v-model="invoice.email"></md-input>
-                     </md-input-container>
-
-                     <button class="button">Ir a pagar</button>
-                 </form>
-
+                   <form-ticket v-for="n in quantity"
+                                :buyer="buyer"
+                                :ticket="n"
+                                :key="n">
+                    </form-ticket>
+                    <button class="button" @click="doPayment(buyer)">Ir a pagar</button>
              </div>
          </div>
-
           <div class="logos_inferiores">
              <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
                  alt="">
@@ -84,23 +32,26 @@
 
  <script>
      import {mapActions , mapGetters} from 'vuex'
+     import formTicket from './form.vue'
      export default{
          methods: mapActions({
              doPayment: 'setDataPayment'
          }),
          computed: mapGetters({
-             buyer: 'getBuyer',
              invoice: 'getInvoice',
-             ticket: 'getTicket'
+             ticket: 'getTicket',
+             quantity: 'getNumTickets',
+             buyer: 'getBuyer'
          }),
          created () {
              this.$store.dispatch('getTicket')
          },
          beforeRouteEnter (to, from, next) {
-             next(vm => {
-                 !vm.$store.state.auth.authenticate ? next('/singin') : next('')
-             })
+            next()
          },
+         components:{
+             formTicket: formTicket
+         }
      }
 
  </script>
