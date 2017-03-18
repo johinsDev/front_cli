@@ -54,7 +54,7 @@ const actions = {
     },
     setDataPayment ({ commit , dispatch} , data) {
         dispatch('setBuyer' , data);
-        //redirect.push({path: 'confirmation'})
+        redirect.push({path: 'confirmation'})
     },
 };
 

@@ -20,21 +20,23 @@ const getters = {
 
 const actions = {
     setCard ({commit , dispatch , rootState} , data) {
-        Card.create(data , (data) => {
+        let card = data.card;
+        card.identificationNumber = data.user.identificationNumber;
+        card.name = data.user.name;
+        let user = data.user
+        Card.create(card , (data) => {
             commit(types.SET_TOKEN_CARD, data.card.creditCardTokenId);
             commit(types.SET_CARD, data.card);
             dispatch('checkout' , {
                 credit_card: data.card.creditCardTokenId,
-                user: rootState.auth.user.UID,
                 ticket: localStorage.getItem('ticket'),
-                data:{
-                    buyer: rootState.data.buyer,
-                    invoice: rootState.data.invoice,
-                }
+                data: rootState.data.buyer,
+                quantity: rootState.tickets.num_tickets,
+                user: user
             })
-
         }, (error) => {
-            dispatch('setErrors' , error)
+            console.log(error)
+           //dispatch('setErrors' , error)
         })
     }
 };

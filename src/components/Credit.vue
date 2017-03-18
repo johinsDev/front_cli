@@ -1,11 +1,19 @@
 <template>
     <section>
            <div class="container_form">
-        <form class="form" @submit.prevent="create(card)">
-            <md-input-container>
+        <form class="form" @submit.prevent="create({card , user})">
+                <md-input-container>
                         <label>Nombre titular de la tarjeta</label>
-                        <md-input type="text" id="names" v-model="card.name"></md-input>
+                        <md-input type="text" id="names" v-model="user.name"></md-input>
               </md-input-container>
+            <md-input-container>
+                <label>Email</label>
+                <md-input type="email" id="names" v-model="user.email"></md-input>
+            </md-input-container>
+            <md-input-container>
+                <label>Numero telefono</label>
+                <md-input type="phone" id="names" v-model="user.phone"></md-input>
+            </md-input-container>
                <md-input-container>
                         <label>Numero tarjeta</label>
                         <md-input type="text" id="names" v-model="card.number"></md-input>
@@ -16,13 +24,13 @@
               </md-input-container>
                  <md-input-container>
                         <label>Numero de identificacion</label>
-                        <md-input type="text" id="names" v-model="card.identificationNumber"></md-input>
+                        <md-input type="text" id="names" v-model="user.identificationNumber"></md-input>
               </md-input-container>
                  <md-input-container>
                         <label>cvv</label>
                         <md-input type="text" id="names"></md-input>
               </md-input-container>
-           
+
             <button class="button">Proceder al pago</button>
         </form>
     </div>
@@ -45,11 +53,15 @@
             return {
                 card: {
                     payerId: '10',
-                    name: '',
-                    identificationNumber: '',
                     paymentMethod: 'VISA',
                     number: '',
                     expirationDate: ''
+                },
+                user:{
+                    identificationNumber: '',
+                    name: '',
+                    email: '',
+                    phone: ''
                 }
             }
         },
