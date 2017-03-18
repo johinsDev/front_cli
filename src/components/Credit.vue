@@ -1,32 +1,33 @@
 <template>
-    <section>
-           <div class="container_form">
-        <form class="form" @submit.prevent="create(card)">
-            <md-input-container>
-                        <label>Nombre titular de la tarjeta</label>
-                        <md-input type="text" id="names" v-model="card.name"></md-input>
-              </md-input-container>
-               <md-input-container>
-                        <label>Numero tarjeta</label>
-                        <md-input type="text" id="names" v-model="card.number"></md-input>
-              </md-input-container>
-                 <md-input-container>
-                        <label>Fecha vencimiento</label>
-                        <md-input type="text" id="names" v-model="card.expirationDate"></md-input>
-              </md-input-container>
-                 <md-input-container>
-                        <label>Numero de identificacion</label>
-                        <md-input type="text" id="names" v-model="card.identificationNumber"></md-input>
-              </md-input-container>
-                 <md-input-container>
-                        <label>cvv</label>
-                        <md-input type="text" id="names"></md-input>
-              </md-input-container>
-           
-            <button class="button">Proceder al pago</button>
-        </form>
-    </div>
-</section>
+<form @submit.prevent="create(card)">
+                <div class="form-group">
+                    <label for="name">Nombre Titular de la cuenta</label>
+                    <input type="text" class="form-control" id="names" placeholder="Nombre" v-model="card.name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Numero Tarjeta</label>
+                    <input type="text" class="form-control" id="num" placeholder="Numero" v-model="card.name">
+                </div>
+                <div class="tarjetas">
+                    <img src="../../assets/logos-tarjetas-credito.png" width="200" alt="tarjetas de credito">
+                  </div> 
+                 <div class="form-group">
+                    <label for="date">Fecha de vencimiento</label>
+                    <input type="text" class="form-control" id="date" placeholder="Fecha" v-model="card.expirationDate">
+                </div>
+                <div class="form-group">
+                    <label for="date">Numero de Documento Titulae</label>
+                    <input type="text" class="form-control" id="date" placeholder="Fecha"  v-model="card.identificationNumber">
+                </div>
+                 <div class="form-group">
+                    <label for="exampleInputPassword1">cvv</label>
+                    <input type="email" class="form-control" id="emailC" placeholder="email">
+                </div>
+                   
+                <button class="btn btn-primary">Proceder al pago</button>
+                
+</form>
+ 
 </template>
 
 <script>
@@ -72,4 +73,5 @@
     margin:  auto;
    
 }
+
 </style>

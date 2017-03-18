@@ -32,18 +32,17 @@ const getters = {
 //actions
 
 const actions = {
-    getInvoice ({ commit } , data) {
+    getInvoice ({ commit }) {
         Payment.getData('invoice' , (data) => {
             commit(types.GET_INVOICE , data )
         })
     },
-    getBuyer ({ commit } , data) {
+    getBuyer ({ commit }) {
         Payment.getData('buyer' , (data) => {
             commit(types.GET_BUYER , data )
         })
     },
     setBuyer ({ commit } , data) {
-        console.log(data);
         Payment.setData(data , 'buyer' , (data) => {
             commit(types.SET_BUYER , data )
         })
@@ -54,8 +53,7 @@ const actions = {
         })
     },
     setDataPayment ({ commit , dispatch} , data) {
-        dispatch('setBuyer' , data.buyer);
-        dispatch('setInvoice' , data.invoice);
+        dispatch('setBuyer' , data);
         redirect.push({path: 'confirmation'})
     },
 };
@@ -63,7 +61,7 @@ const actions = {
 //mutations
 
 const mutations = {
-    [types.SET_BUYER] : (state , { data }) => {
+    [types.SET_BUYER] : (state , data) => {
         state.buyer = data;
     },
     [types.SET_INVOICE] : (state , { data }) => {
