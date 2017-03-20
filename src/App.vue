@@ -7,30 +7,48 @@
                    
                 </div>
             </div>
-
+            
+            <div class="nav_principal">      
             <div class="row menu text-center ">
-
-                <div class="col-md-4 ">
+            
+                <div class="col-md-3 ">
                     <router-link class="link" exact to="/">
-                        <h1>1</h1>
-                        <h4>Boletas</h4>
+                    <div class="texto">
+                    
+                        <h3>Paso 1</h3>
+                        <h4>Elegir Boletas</h4>
+                    </div>
                     </router-link>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <router-link class="link" to="/payment">
-                        <h1>2</h1>
-                        <h4>Datos de Compra</h4>
+                    <div class="texto">
+                    
+                        <h3>Paso 2</h3>
+                        <h4>Ingreso de datos por boleta</h4>
+                    </div>
                     </router-link>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <router-link class="link" to="/confirmation">
-                        <h1>3</h1>
-                        <h4>Confirmacion de pago</h4>
+                    <div class="texto">
+                        <h3>Paso 3</h3>
+                        <h4>Seleccionar medio de pago</h4>
+                    </div>
+                    </router-link>
+                </div>
+                <div class="col-md-3">
+                    <router-link class="link" to="/finish">
+                    <div class="texto">     
+                        <h3>Paso 4</h3>
+                        <h4>Finalización de compra</h4>
+                    </div>
                     </router-link>
                 </div>
             </div>
 
         </div>
+            </div>
 
         <div class="errores" v-show="errors">
             <ul>
@@ -67,40 +85,109 @@
 </script>
 
 
-<style>
-body{
-    background: #E7EBF0;
-}
-    .router-link-active h1  {
-        
-        text-decoration: none;
-        background: #025AA5;
-        color: white;
-        width: 50px;
-        margin: auto;
-        border-radius: 50%;
-       
+<style >
+/*estilos generales*/
+/*carrito*/
+    .title{
+       background: white;
+        height: 50px;
+        text-align: center;
+
     }
-    h1, h4{
-        color: grey;
+   .title .fa-shopping-cart{
+        color:  #1AC1B6;
+        font-size: 50px ;
+        
+    }
+    .shoping_card{
+        padding: 0;
+    }
+    .shoping_card card_text{
+        paddign: 20px;
+    }
+/*Cartas*/
+.card{
+            background: #D3E5E9;
+             box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+    }
+  .card-header{     
+         box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+        background: #1AC1B6; 
+        background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -o-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -moz-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        
+    }
+      
+    .collapsed{
+        color: white;
+    }
+
+.footer-img{
+  
+        margin-top: 70px;
+        background: white;
+}
+   ul,li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+body{
+   background:  #D3E5E9; 
+}
+.container.botones{
+        height: 10px;
+        margin-top: 0;
+        margin-bottom: 100px;
+}
+ .container {
+         font-family: 'Titillium Web', sans-serif;
+     padding: 80px;
+    background:white;
+        margin-top: 70px;
+     background: white;
+     width: 90%; 
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+    }
+/*barra de navegacion- cambiar a sass*/
+.nav_principal{
+     font-family: 'Titillium Web', sans-serif;
+     border: 1px solid #81C4CA ;
+     background: white;
+}
+.nav_principal h4 { 
+   font-size: 15px; 
+}
+ .nav_principal h3{
+   font-size: 20px; 
+ }
+    .texto{    
+        margin: 10px 0 0 20px;
+    }
+
+  .router-link-active .texto {
+       margin: 10px 0 0 20px;
+       border-radius: 5px;    
+       background: #2AA2AB;
+       color: white;
     }
     .link {
-        font-size: 30px;
+        font-size: 10px;
         text-decoration: none;
-        background: black;
-        
     }
-    
-    template {
-        height: 100vh;
-        background: white;
-    }
-    
+/*/ barra de navegacion*/    
+  
     .logo {
         
         height: 150px;
         width: 100%;
-        background: #5682A3;
+        background: #1AC1B6; 
+        background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -o-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -moz-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
     }
     
     .logo img {
@@ -108,4 +195,31 @@ body{
         display: block;
         margin: auto;
     }
+
+    /*Botones, pasar a sass*/
+    .btn-primary, .btn-primary:hover, .btn-primary:active{
+       background: #1AC1B6; 
+       border: 1px solid #1AC1B6;
+        background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -o-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -moz-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+         width: 200px;
+    }
+ 
+
+    .btn-primary.plus, .btn-primary.minus, .btn-primary.plus:active{
+     background: none;
+     width: 50px;
+       font-size: 30px;
+       border: none;
+    }
+    .fa-plus, .fa-minus{
+      
+     background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+  -webkit-background-clip: text;
+  color: transparent;  
+    }
+
+
 </style>

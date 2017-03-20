@@ -2,8 +2,8 @@
     <section>   
 
     <div class="container">
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row justify-content-md-center">
+          <div class="col-md-6 col-md-offset-3 col-xl-6">
               <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
@@ -37,16 +37,22 @@
  
 </div>
           </div>
-             <div class="col col-md-4  col-xl-4 ">
-                    <div class="card" style="width: 30rem;">
+             <div class="col col-md-2  col-xl-2 ">
+                    <div class="card " style="width: 300px">
 
-                        <div class="card-block">
-                            <h4 class="card-title">Tu Compra <i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
-                            <p class="card-text"><h4><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante  </h4></p>
-                            <p class="card-text"><h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h4></p>
-                             <p class="card-text"><h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar  </h4></p>
-                            
-
+                        <div class="card-block shoping_card">
+                            <div class="title">             
+                            <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                            </div>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -96,94 +102,4 @@
 </script>
 <style scoped>
     /* background: linear-gradient(to bottom, #ef167d, #ffc902);*/
-   
-    .tabs {
-        margin: auto;
-        width: 600px;
-        border: 5px solid #000;
-        height: 700px;
-    }
-    
-    .container {
-        
-     padding: 80px;
-     box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
-        margin-top: 70px;
-     background: white;
-    }
-    
-    .logos_inferiores {
-        margin-top: 90px;
-        border-top: 2px solid #f3465c;
-        position: absolute;
-        width: 95%;
-    }
-    
-    nav {
-        background: black ;
-       
-    }
-    
-    .nav-tabs {
-        border-bottom: 2px solid #DDD;
-    }
-    
-    .nav-tabs > li.active > a,
-    .nav-tabs > li.active > a:focus,
-    .nav-tabs > li.active > a:hover {
-        border-width: 0;
-    }
-    
-    .nav-tabs > li > a {
-        border: none;
-        color: #666;
-    }
-    
-    .nav-tabs > li.active > a,
-    .nav-tabs > li > a:hover {
-        border: none;
-        color: #4285F4 !important;
-        background: transparent;
-    }
-    
-    .nav-tabs > li > a::after {
-        content: "";
-        background: #4285F4;
-        height: 2px;
-        position: absolute;
-        width: 100%;
-        left: 0px;
-        bottom: -1px;
-        transition: all 250ms ease 0s;
-        transform: scale(0);
-    }
-    
-    .nav-tabs > li.active > a::after,
-    .nav-tabs > li:hover > a::after {
-        transform: scale(1);
-    }
-    
-    .tab-nav > li > a::after {
-        background: #21527d none repeat scroll 0% 0%;
-        color: #fff;
-    }
-    
-    .tab-pane {
-        padding: 15px 0;
-    }
-    
-    .tab-content {
-        padding: 20px
-    }
-    
-    .card {
-        background: #FFF none repeat scroll 0% 0%;
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-        margin-bottom: 30px;
-    }
-    
-    body {
-        background: #EDECEC;
-        padding: 50px
-    }
 </style>

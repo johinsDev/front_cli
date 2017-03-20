@@ -2,7 +2,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col col-md-6  col-xl-6 ">
+                <div class="col col-md-9  col-xl-9 ">
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="card">
                             <div class="card-header" role="tab" id="headingOne">
@@ -50,42 +50,60 @@
                             <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
                                 <div class="card-block">
                                     <!--Boleta Estudiante-->
-                                    <ul v-for="ticket in tickets.Etapa2">
-                                        <div class="card">
+                                    
+                                        <div class="card boleta">
                                             <div class="card-block">
                                                 <h4 class="card-title">Boleta Estudiante</h4>
+                                                <div class="logo_boleta" >
+                                                
+                                                 <img src="../../assets/imgClic.svg" alt="">
+                                                </div>
                                                 <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
                                                 <p class="card-text">
                                                     <h3>$10.000</h3>
                                                 </p>
-                                                <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-primary plus"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-primary minus"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
-                                    </ul>
+                                        <div class="card boleta">
+                                            <div class="card-block">
+                                                <h4 class="card-title">Boleta Profesional</h4>
+                                                        <img class="logo_boleta" src="../../assets/imgClic.svg" alt="">
+                                                <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
+                                                <p class="card-text">
+                                                    <h3>$10.000</h3>
+                                                </p>
+                                                                 
+                                                <button type="button" class="btn btn-primary plus"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-primary minus"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                   
 
                                 </div>
                             </div>
                         </div>
 
                     </div>
+                    
                 </div>
-                <div class="col col-md-4  col-xl-4 ">
-                    <div class="card" style="width: 30rem;">
+                <div class="col col-md-2  col-xl-2 ">
+                    <div class="card " style="width: 300px">
 
-                        <div class="card-block">
-                            <h4 class="card-title">Tu Compra <i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                        <div class="card-block shoping_card">
+                            <div class="title">             
+                            <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                            </div>
                             <p class="card-text">
-                                <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h4>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
                             </p>
                             <p class="card-text">
-                                <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h4>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
                             </p>
                             <p class="card-text">
-                                <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h4>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
                             </p>
-
-
                         </div>
                     </div>
                 </div>
@@ -93,7 +111,7 @@
         </div>
 
 
-        <div class="container">
+        <div class="container botones">
             <!--Botones-->
             <div class="row text-center">
                 <div class="col-md-12">
@@ -101,6 +119,14 @@
                 </div>
             </div>
         </div>
+         <footer class="footer-img">         
+            <div class="row text-center">
+                <div class="col-md-12">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
+                 alt="">
+                </div>
+            </div>
+        </footer>
     </section>
 
 </template>
@@ -128,16 +154,29 @@
 </script>
 
 <style scoped>
-    .container {
-        padding: 80px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        margin-top: 70px;
+/*Estilos Boletas pasar a sass*/
+    .card.boleta{
         background: white;
+         margin-top: 20px; 
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+         
     }
-    
-    ul,
-    li {
-        padding: 0;
-        margin: 0;
+   .card-title{
+       text-align: center;
+        font-size: 30px;
+        font-weight: bold;
     }
+.card-subtitle {
+      text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+}
+    /*logo boleta*/
+.logo_boleta{
+    position: absolute;
+    right: 0;
+    width: 130px;   
+    top: 0;
+  
+}
 </style>

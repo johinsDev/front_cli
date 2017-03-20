@@ -2,7 +2,7 @@
     <section>
         <div class="container">
 
-            <div class="row">
+            <div class="row justify-content-md-center">
 
                 <div class=" col-md-6  col-xl-6 ">
 
@@ -31,29 +31,28 @@
 
                     </div>
                 </div>
-                <div class="col col-md-4  col-xl-4 ">
-                    <div class="card" style="width: 30rem;">
+                  <div class=" col-md-2   col-xl-2 ">
+                    <div class="card " style="width: 300px">
 
-                        <div class="card-block">
-                            <h4 class="card-title">Tu Compra <i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                        <div class="card-block shoping_card">
+                            <div class="title">             
+                            <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                            </div>
                             <p class="card-text">
-                                <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> {{ quantity }} {{ticket.name}} ${{ticket.price}}
-                                </h4>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
                             </p>
                             <p class="card-text">
-                                <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h4>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
                             </p>
                             <p class="card-text">
-                                <h4><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h4>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
                             </p>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container botones">
             <!--Botones-->
             <div class="row text-center">
                 <div class="col-md-6">
