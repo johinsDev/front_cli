@@ -6,7 +6,8 @@ import * as types from '../mutation-types'
 const state = {
     all: [],
     added: [],
-    num_tickets: 0
+    num_tickets: 0,
+    total: 0
 };
 
 //getters
@@ -15,6 +16,7 @@ const getters = {
     allTickets: (state) => state.all,
     getTicket: (state) => state.added,
     getNumTickets: (state) => parseInt(state.num_tickets),
+    getTotal: (state) => parseInt(state.num_tickets * state.added.price),
 };
 
 

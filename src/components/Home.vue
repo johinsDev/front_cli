@@ -121,7 +121,7 @@
                                     <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
                                 </p>
                                 <p class="card-text">
-                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar {{ total }}</h5>
                                 </p>
                             </div>
 
@@ -151,7 +151,8 @@
         computed: mapGetters({
             tickets: 'allTickets',
             added: 'getTicket',
-            num_tickets: 'getNumTickets'
+            num_tickets: 'getNumTickets',
+            total: 'getTotal'
         }),
         methods: mapActions([
             'add',
@@ -161,7 +162,7 @@
         ]),
         created() {
             this.$store.dispatch('getAllTickets'),
-                this.$store.dispatch('getTicket')
+            this.$store.dispatch('getTicket')
         },
         components: {
             buttoms: buttoms

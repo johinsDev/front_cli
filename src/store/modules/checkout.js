@@ -5,13 +5,17 @@ import redirect from '../../main'
 //states initial
 
 const state = {
-    checkoutStatus: null
+    checkoutStatus: null,
+    ticketsBuy: {},
+    order: {}
 };
 
 //getters
 
 const getters = {
     checkoutStatus: (state) => state.checkoutStatus,
+    getTicketsBuy: (state) => state.ticketsBuy,
+    getOrder: (state) => state.order,
 };
 
 
@@ -36,17 +40,23 @@ const mutations = {
     },
 
     [types.CHECKOUT_SUCCESS] (state , data) {
-        state.checkoutStatus = 'successful';
+       if (data.status != 'APPROVED'){
+            state.checkoutStatus = 'failed';
+        }else{
+           localStorage.removeItem('ticket');
+           localStorage.removeItem('num_tickets');
+           localStorage.removeItem('buyer');
+           state.ticketsBuy = data.data.tickets;
+           state.order = data.data.order;
+           state.checkoutStatus = 'successful';
+           redirect.push({path: '/finish'});
+        }
 
-        console.log(data);
-        //redirect.push({path: '/'});
     },
 
     [types.CHECKOUT_FAILURE] (state , error ) {
-        //si falla solo notificar
-        console.log('aqui esta fallando');
         state.checkoutStatus = 'failed';
-    }
+    },
 };
 
 

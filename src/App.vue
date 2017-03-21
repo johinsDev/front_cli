@@ -55,10 +55,6 @@
                 <li v-for="error in errors">{{ error.error }}</li>
             </ul>
         </div>
-
-        <div v-if="checkoutStatus">
-            Pago exitoso felicidades
-        </div>
         <router-view></router-view>
 
     </section>

@@ -50,7 +50,7 @@
                                 <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
                             </p>
                             <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>Total a pagar {{ total }}</h5>
                             </p>
                         </div>
                     </div>
@@ -91,16 +91,23 @@
             invoice: 'getInvoice',
             buyer: 'getBuyer',
             ticket: 'getTicket',
-              quantity: 'getNumTickets'
+            quantity: 'getNumTickets',
+            total: 'getTotal'
         }),  
         
         created() {
             this.$store.dispatch('getTicket')
         },
-        
-        beforeRouteEnter (to, from, next) {
+
+        beforeRouteEnter(to, from, next) {
             next(vm => {
-                !vm.$store.state.tickets.add ? next() : next('/')
+                if (    vm.$store.state.tickets.num_tickets != 0
+                        && typeof  vm.$store.state.data.buyer !='undefined'
+                        &&  vm.$store.state.tickets.num_tickets <= vm.$store.state.data.buyer.length){
+                    next()
+                }else{
+                    next('/payment')
+                };
             })
         },
         components: {

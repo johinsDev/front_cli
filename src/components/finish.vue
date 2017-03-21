@@ -1,60 +1,33 @@
 <template>
     <section>
-        <div class="container">
+        <div class="container" v-show="checkoutStatus">
             <!--Si el pago es exitoso-->
-           <div class="row justify-content-md-center" v-if="1>2">
+           <div class="row justify-content-md-center" v-if="checkoutStatus == 'successful'">
                <div class="col-md-12">
                     <h2 style="text-align: center"><i class="fa fa-smile-o" aria-hidden="true"></i> Pago Exitoso</h2>
                     <br/>
                     <h4><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Datos de compra</h4>
-                   <h3><i class="fa fa-circle" aria-hidden="true"></i> Codigo: </h3>
-                   <h3><i class="fa fa-circle" aria-hidden="true"></i> Total valor pagado: </h3>
+                   <h3><i class="fa fa-circle" aria-hidden="true"></i> Codigo: {{ order.id }}</h3>
+                   <h3><i class="fa fa-circle" aria-hidden="true"></i> Total valor pagado: {{ order.total }}. Cantidad {{ order.quantity }}.</h3>
                    
                </div>
                  <div class="col col-md-8  col-xl-6 ">
-
-              
-                                   
-                   
-                        <div class="card boleta">
-                        <div class="card-block">
-                            <h4 class="card-title">Boleta Estudiante</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
-                               <div class="logo_boleta">
-
-                                                        <img src="../../assets/imgClic.svg" alt="">
-                                                    </div>
-                              <p class="card-text">Codigo: </p>                      
-                            <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>Nicolas Restrepo</p>
-                            <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>1033800785</p>
-                            <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>nicolas.retrepo@mocionsoft.com</p>
-                            
+                        <div class="card boleta" v-for="ticket in tickets">
+                            <div class="card-block">
+                                <h4 class="card-title" v-if="ticket.category == 'estudiantes'">Boleta Estudiante</h4>
+                                <h4 class="card-title" v-else>Boleta Profesional</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
+                                   <div class="logo_boleta">
+                                       <img src="../../assets/imgClic.svg" alt="">
+                                   </div>
+                                <p class="card-text">Codigo: {{ ticket.id }}</p>
+                                <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>{{ ticket.assist.name }} {{ ticket.assist.last_name }}</p>
+                                <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>{{ ticket.assist.cc }} </p>
+                                <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>{{ ticket.assist.email }} </p>
+                            </div>
                         </div>
-                        </div>
-                                        
-
-                                
                  </div>
-                   <div class="col col-md-6 col-xl-6 ">
-                        <div class="card boleta">
-                        <div class="card-block">
-                            <h4 class="card-title">Boleta Estudiante</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
-                               <div class="logo_boleta">
-
-                                                        <img src="../../assets/imgClic.svg" alt="">
-                                                    </div>
-                              <p class="card-text">Codigo: </p>                      
-                            <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>Nicolas Restrepo</p>
-                            <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>1033800785</p>
-                            <p class="card-text"><i class="fa fa-check" aria-hidden="true"></i>nicolas.retrepo@mocionsoft.com</p>
-                            
-                        </div>
-                        </div>
-                                        
-
-                                
-                 </div>    
+               <router-link class="link" to="/"><h3>Regresar al inicio</h3></router-link>
             </div>
 
              <!--Si el pago fue rechasado-->   
@@ -70,8 +43,8 @@
                </div>
             </div>    
             </div>
-        </div>  
-        <footer class="footer-img" style="bottom: 0; position: absolute; width: 100%">         
+        </div>
+        <footer class="footer-img" >
             <div class="row text-center">
                 <div class="col-md-12">
                   <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
@@ -87,16 +60,14 @@
     import { mapGetters, mapActions } from 'vuex'
     export default {
         computed: mapGetters({
-            tickets: 'allTickets',
-            added: 'getTicket'
+            checkoutStatus : 'checkoutStatus',
+            tickets: 'getTicketsBuy',
+            order: 'getOrder'
         }),
-        methods: mapActions([
-            'add',
-            'next'
-        ]),
-        created() {
-            this.$store.dispatch('getAllTickets'),
-                this.$store.dispatch('getTicket')
+        beforeRouteEnter(to, from, next) {
+            next(vm => {
+                vm.$store.state.checkout.checkoutStatus  ?  next() : next('/confirmation')
+            })
         },
     }
 

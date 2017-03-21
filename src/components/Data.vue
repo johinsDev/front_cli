@@ -18,15 +18,16 @@
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h5 class="mb-0">
                                             <a data-toggle="collapse" style="color: white" data-parent="#accordion" href="#nav"aria-expanded="true" aria-controls="collapseOne">
-                           Datos de {{buyer[n - 1].name}} 
-                          
-                            </a>
+                                                Datos de {{buyer[n - 1].name}}
+
+                                            </a>
                                         </h5>
                                     </div>
                                     <div class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="card-block">
                                             <form-ticket :buyer="buyer" :ticket="ticket" :numTicket="n" :key="n">
                                             </form-ticket>
+                                            <button class="btn btn-primary" @click="doPayment(buyer)">Ir a pagar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -50,7 +51,7 @@
                                 <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
                             </p>
                             <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar {{ total }}</h5>
                             </p>
                         </div>
                     </div>
@@ -82,7 +83,8 @@
             ticket: 'getTicket',
             quantity: 'getNumTickets',
             buyer: 'getBuyer',
-            num_tickets: 'getNumTickets'
+            num_tickets: 'getNumTickets',
+            total: 'getTotal'
         }),
         created() {
             this.$store.dispatch('getTicket')
