@@ -2,7 +2,7 @@
 <form @submit.prevent="create(card)">
                 <div class="form-group">
                     <label for="name">Nombre Titular de la cuenta</label>
-                    <input type="text" class="form-control" id="names" placeholder="Nombre" v-model="card.name">
+                    <input type="text" class="form-control" id="names" placeholder="Nombre" v-model="user.name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Numero Tarjeta</label>

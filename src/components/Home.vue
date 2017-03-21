@@ -139,17 +139,11 @@
         ]),
         created() {
             this.$store.dispatch('getAllTickets'),
-<<<<<<< HEAD
             this.$store.dispatch('getTicket')
-        },
-=======
-                this.$store.dispatch('getTicket')
         },  
         components: {
             buttoms: buttoms
         }
-    
->>>>>>> c822d5b9ebad41e754aa3bf0147bdbff28cc8d1c
     }
 
 </script>
