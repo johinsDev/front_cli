@@ -3,7 +3,7 @@
         <div class="contenedor">
             <div class="row centered">
                 <div class="logo">
-                    <img src="../assets/logoClic.svg" alt="logo">
+                    <img src="dist/logoClic.svg" alt="logo">
                    
                 </div>
             </div>

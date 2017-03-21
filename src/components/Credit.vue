@@ -17,7 +17,7 @@
                     <input type="text" class="form-control" id="num" placeholder="Numero" v-model="card.number">
                 </div>
                 <div class="tarjetas">
-                    <img src="../../assets/logos-tarjetas-credito.png" width="200" alt="tarjetas de credito">
+                    <img src="dist/logos-tarjetas-credito.png" width="200" alt="tarjetas de credito">
                   </div> 
                  <div class="form-group" style="width: 40%; display: inline-block">
                     <label for="date" >Fecha de vencimiento</label>

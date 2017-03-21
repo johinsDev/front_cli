@@ -25,7 +25,7 @@
                                                     <h6 class="card-subtitle mb-2 text-muted">Etapa 1</h6>
                                                     <div class="logo_boleta">
 
-                                                        <img src="../../assets/imgClic.svg" alt="">
+                                                        <img src="dist/imgClic.svg" alt="">
                                                     </div>
                                                     <p class="card-text">
                                                         <h3> ${{ ticket.price }}</h3>
@@ -68,7 +68,7 @@
                                                     <h6 class="card-subtitle mb-2 text-muted">Etapa 2</h6>
                                                     <div class="logo_boleta">
 
-                                                        <img src="../../assets/imgClic.svg" alt="">
+                                                        <img src="dist/imgClic.svg" alt="">
                                                     </div>
                                                     <p class="card-text">
                                                         <h3> ${{ ticket.price }}</h3>
