@@ -90,14 +90,15 @@
             invoice: 'getInvoice',
             ticket: 'getTicket',
             quantity: 'getNumTickets',
-            buyer: 'getBuyer'
+            buyer: 'getBuyer',
+            num_tickets: 'getNumTickets'
         }),
         created() {
             this.$store.dispatch('getTicket')
         },
         beforeRouteEnter(to, from, next) {
             next(vm => {
-                !vm.$store.state.ticket.num_tickets  ? next() : next('/')
+                vm.$store.state.tickets.num_tickets  ? next() : next('/')
             })
         },
         components: {

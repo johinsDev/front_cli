@@ -146,7 +146,7 @@
         ]),
         created() {
             this.$store.dispatch('getAllTickets'),
-                this.$store.dispatch('getTicket')
+            this.$store.dispatch('getTicket')
         },
     }
 
