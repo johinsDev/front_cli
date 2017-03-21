@@ -109,15 +109,7 @@
             </div>
         </div>
 
-
-        <div class="container botones">
-            <!--Botones-->
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <button @click="next('/payment')" class="btn btn-primary">Siguiente <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-                </div>
-            </div>
-        </div>
+  <buttoms :nextPage="'/payment'"></buttoms>
          <footer class="footer-img">         
             <div class="row text-center">
                 <div class="col-md-12">
@@ -132,6 +124,7 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
+    import buttoms from './Buttom.vue' 
     export default {
         computed: mapGetters({
             tickets: 'allTickets',
@@ -147,7 +140,11 @@
         created() {
             this.$store.dispatch('getAllTickets'),
                 this.$store.dispatch('getTicket')
-        },
+        },  
+        components: {
+            buttoms: buttoms
+        }
+    
     }
 
 </script>
