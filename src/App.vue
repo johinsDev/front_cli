@@ -95,7 +95,7 @@
         text-align: center;
 
     }
-   .title .fa-shopping-cart{
+   .title .fa-shopping-cart, .fa-cart-plus{
         color:  #1AC1B6;
         font-size: 50px ;
         
