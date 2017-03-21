@@ -10,12 +10,12 @@
     <input type="text" class="form-control"  placeholder="Apellidos"  v-model="buyer[numTicket - 1].last_name">
 </div>
 <div class="form-group">
-    <label for="document">Documento de identidad</label>
-    <input type="text" class="form-control"  placeholder="Documentos de identidad" v-model="buyer[numTicket - 1].email">
+    <label for="document">Email</label>
+    <input type="text" class="form-control"  placeholder="email" v-model="buyer[numTicket - 1].email">
 </div>
 <div class="form-group">
-    <label for="email">Correo Electronico</label>
-    <input type="email" class="form-control"  placeholder="email" v-model="buyer[numTicket - 1].cc">
+    <label for="email">Documento de identidad</label>
+    <input type="email" class="form-control"  placeholder="Documento de identidad" v-model="buyer[numTicket - 1].cc">
 </div>
 
 
