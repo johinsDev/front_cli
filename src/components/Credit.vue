@@ -1,12 +1,12 @@
 <template>
-<form @submit.prevent="create(card)">
-                <div class="form-group">
-                    <label for="name">Nombre Titular de la cuenta</label>
+    <form  @submit.prevent="create({card , user})">
+        <div class="form-group">
+                    <label for="names">Nombre Titular de la cuenta</label>
                     <input type="text" class="form-control" id="names" placeholder="Nombre" v-model="user.name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Numero Tarjeta</label>
-                    <input type="text" class="form-control" id="num" placeholder="Numero" v-model="card.name">
+                    <label for="num">Numero Tarjeta</label>
+                    <input type="text" class="form-control" id="num" placeholder="Numero" v-model="card.number">
                 </div>
                 <div class="tarjetas">
                     <img src="../../assets/logos-tarjetas-credito.png" width="200" alt="tarjetas de credito">
@@ -16,14 +16,17 @@
                     <input type="text" class="form-control" id="date" placeholder="Fecha" v-model="card.expirationDate">
                 </div>
                 <div class="form-group">
-                    <label for="date">Numero de Documento Titulae</label>
-                    <input type="text" class="form-control" id="date" placeholder="Fecha"  v-model="card.identificationNumber">
+                    <label for="date">Numero de Documento Titular</label>
+                    <input type="text" class="form-control"  placeholder="Cedula titular"  v-model="user.identificationNumber">
                 </div>
                  <div class="form-group">
-                    <label for="exampleInputPassword1">cvv</label>
-                    <input type="email" class="form-control" id="emailC" placeholder="email">
+                    <label for="cvv">cvv</label>
+                    <input type="number" class="form-control" id="cvv" placeholder="email">
                 </div>
-                   
+                <div class="form-group">
+                    <label for="email">Correo electronico</label>
+                    <input type="number" class="form-control" id="email" placeholder="email"  v-model="user.email">
+                </div>
                 <button class="btn btn-primary">Proceder al pago</button>
                 
 </form>
@@ -46,11 +49,15 @@
             return {
                 card: {
                     payerId: '10',
-                    name: '',
-                    identificationNumber: '',
                     paymentMethod: 'VISA',
                     number: '',
                     expirationDate: ''
+                },
+                user:{
+                    identificationNumber: '',
+                    name: '',
+                    email: '',
+                    phone: ''
                 }
             }
         },
