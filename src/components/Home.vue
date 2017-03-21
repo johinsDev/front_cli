@@ -1,39 +1,134 @@
 <template>
     <section>
-         <div class="container">          
-            <md-tabs md-centered class="tabs">
+        <div class="container">
+            <div class="row">
+                <div class="col col-md-9  col-xl-9 ">
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h5 class="mb-0">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                       Etapa 1
+                        </a>
+                                </h5>
+                            </div>
 
-                <md-tab class="tab"  md-label="Etapa 1">
-                    <div class="boletas">
-                        <p>Fecha:</p>
-                        <ul>
-                            <li v-for="ticket in tickets.Etapa1" :class="added.id == ticket._id ? 'seleccion' : ''">
-                                {{ ticket.name }} ${{ ticket.price }}
+                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                <ul>
+                                    <li v-for="ticket in tickets.Etapa1" :class="added.id == ticket._id ? 'seleccion' : ''">
+                                        <div class="card-block">
+                                            <!--Boleta Estudiante-->
+                                            <div class="card">
+                                                <div class="card-block">
+                                                    <h4 class="card-title">{{ ticket.name }}</h4>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
+                                                    <p class="card-text">
+                                                        <h3> ${{ ticket.price }}</h3>
+                                                    </p>
+                                                    <button type="button" @click="plus()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i></button>                                                    {{ num_tickets }}
+                                                    <button type="button" @click="minus()" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                                    <button type="button" @click="add(ticket._id)" class="btn btn-warning">Agregar</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
 
-                                <h1>Cantidad: {{ num_tickets }}</h1>
-                                <button @click="plus()">Aumentar</button>
-                                <button @click="minus()">Reducir</button>
-                               <md-radio @change="add(ticket._id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
-                            </li>
-                        </ul>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <!--Segunda Etapa-->
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Etapa 2
+                        </a>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="card-block">
+                                    <!--Boleta Estudiante-->
+                                    
+                                        <div class="card boleta">
+                                            <div class="card-block">
+                                                <h4 class="card-title">Boleta Estudiante</h4>
+                                                <div class="logo_boleta" >
+                                                
+                                                 <img src="../../assets/imgClic.svg" alt="">
+                                                </div>
+                                                <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
+                                                <p class="card-text">
+                                                    <h3>$10.000</h3>
+                                                </p>
+                                                <button type="button" class="btn btn-primary plus"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-primary minus"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="card boleta">
+                                            <div class="card-block">
+                                                <h4 class="card-title">Boleta Profesional</h4>
+                                                        <img class="logo_boleta" src="../../assets/imgClic.svg" alt="">
+                                                <h6 class="card-subtitle mb-2 text-muted">Clic 2017</h6>
+                                                <p class="card-text">
+                                                    <h3>$10.000</h3>
+                                                </p>
+                                                                 
+                                                <button type="button" class="btn btn-primary plus"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                <button type="button" class="btn btn-primary minus"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                            </div>
+                                        </div>
+                                   
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                </md-tab>
-                <md-tab md-label="Etapa 2">
-                     <div class="boletas">
-                        <ul>
-                            <li v-for="ticket in tickets.Etapa2" :class="added.id == ticket._id ? 'seleccion' : ''">
-                                {{ ticket.name }} ${{ ticket.price }}
-                                <md-radio @change="add(ticket.id)"  id="my-test1" name="my-test-group1" md-value="i"></md-radio>
-                            </li>
-                        </ul>
+                    
+                </div>
+                <div class="col col-md-2  col-xl-2 ">
+                    <div class="card " style="width: 300px">
+
+                        <div class="card-block shoping_card">
+                            <div class="title">             
+                            <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                            </div>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                            </p>
+                        </div>
                     </div>
-                </md-tab>
-            </md-tabs>
-            <button @click="next('/payment')" class="button">Siguiente</button>
-        <div class="logos_inferiores">
-            <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4" alt="">
+                </div>
+            </div>
         </div>
+
+
+        <div class="container botones">
+            <!--Botones-->
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <button @click="next('/payment')" class="btn btn-primary">Siguiente <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
         </div>
+
+         <footer class="footer-img">         
+            <div class="row text-center">
+                <div class="col-md-12">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
+                 alt="">
+                </div>
+            </div>
+        </footer>
+
     </section>
 
 </template>
@@ -61,50 +156,29 @@
 </script>
 
 <style scoped>
-
-ul{
-    padding: 0;
+/*Estilos Boletas pasar a sass*/
+    .card.boleta{
+        background: white;
+         margin-top: 20px; 
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+         
+    }
+   .card-title{
+       text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+    }
+.card-subtitle {
+      text-align: center;
+        font-size: 20px;
+        font-weight: bold;
 }
-   .seleccion{
-       border: 2px solid black;
-        
-   }
-    .logos_inferiores{
-    margin-top: 90px; 
-    border-top: 2px solid #f3465c;
+    /*logo boleta*/
+.logo_boleta{
     position: absolute;
-    width: 90%;
-    }
-.container {
-        padding: 40px;
-        background: #fff;
-         margin: 40px auto;        
-    }
-.tabs{
-       margin: auto;     
-        width: 600px;
-        border: 5px solid #000;
-        height: 1000px;
-    }
-    
-.boletas {
-
-        height: 300px;
-       
-    }
+    right: 0;
+    width: 130px;   
+    top: 0;
   
-    .boletas ul li {
-        list-style: none;
-        font-size: 1.2rem;
-         padding: 40px ;
-    }
-    @media screen and (max-width: 900px){
-        .boletas {    
-        height: 420px;      
-    }
-     .logos_inferiores{
-   
-    width: 95%;
-    }
-    }   
+}
 </style>

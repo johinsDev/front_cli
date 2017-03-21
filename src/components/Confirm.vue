@@ -1,47 +1,77 @@
 <template>
-    <section>
-    <div class="container">  
-        <md-table v-once>
-  <md-table-header>
-    <md-table-row>
-      <md-table-head>Datos de facturacion</md-table-head>
-    </md-table-row>
-  </md-table-header>
+    <section>   
 
-  <md-table-body>
-    <md-table-row v-for="(row, index) in invoice" :key="index">
-      <md-table-cell>{{ traslate[index] }}</md-table-cell>
-      <md-table-cell md-numeric>{{ row }}</md-table-cell>
-    </md-table-row>
-  </md-table-body>
-</md-table>
-<!--slider con los modos de pago-->
-<p>Modo de pago</p>
-    <md-tabs md-centered class="tabs">
-
-  <md-tab   md-label="Tarjeta Credito">
-   <credit-card></credit-card>
-  </md-tab>
-
-  <md-tab md-label="PSE(Pago sucursal virtual)">
-  </md-tab>
-        <md-tab md-label="Efectivo">
-
-        </md-tab>
-</md-tabs>
+    <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-6 col-md-offset-3 col-xl-6">
+              <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="fa fa-credit-card" aria-hidden="true"></i>
+        </a>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+          <credit-card></credit-card>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          PSE
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+   
+      </div>
+    </div>
+  </div>
 </div>
-<div class="logos_inferiores">
-            <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
-                alt="">
+          </div>
+             <div class="col col-md-2  col-xl-2 ">
+                    <div class="card " style="width: 300px">
+
+                        <div class="card-block shoping_card">
+                            <div class="title">             
+                            <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                            </div>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<div class="container botones" >
+<!--Botones-->
+     <div class="row text-center ">  
+         <div class="col-md-12">
+        <button  @click="next('/')" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Anterior</button>       
+         </div>     
+     </div>
         </div>
     </section>
 </template>
 
 <script>
     import creditCard from './Credit.vue'
-    import {mapGetters} from 'vuex'
+    import { mapGetters } from 'vuex'
 
-    export default{
+    export default {
         data() {
             return {
                 traslate: {
@@ -54,36 +84,15 @@
             }
         },
         computed: mapGetters({
-           invoice: 'getInvoice',
+            invoice: 'getInvoice',
             buyer: 'getBuyer'
         }),
         components: {
             creditCard
         },
     }
+
 </script>
 <style scoped>
-/* background: linear-gradient(to bottom, #ef167d, #ffc902);*/
-    .tabs{
-       margin: auto;     
-        width: 600px;
-        border: 5px solid #000;
-        height: 700px;
-       
-    }
-    .container {        
-        padding: 40px;
-        background: #fff;
-         margin: 40px auto;
-         max-width: 800px;        
-    }
-     .logos_inferiores{
-        margin-top: 90px; 
-    border-top: 2px solid #f3465c;
-    position: absolute;
-    width: 95%;
-    }
-    nav{
-       background: black !important;
-    }
+    /* background: linear-gradient(to bottom, #ef167d, #ffc902);*/
 </style>

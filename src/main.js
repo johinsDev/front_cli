@@ -3,7 +3,6 @@ import VueRouter from 'vue-router';
 import {routes} from './routes';
 import App from './App.vue';
 import store from './store'
-import VueMaterial from 'vue-material'
 
 Vue.use(VueRouter);
 
@@ -12,14 +11,6 @@ const router = new VueRouter({
 });
 
 
-Vue.use(VueMaterial);
-
-Vue.material.registerTheme('default', {
-  primary: 'black',
-  accent: 'black',
-  warn: 'black',
-  background: 'white'
-})
 new Vue({
         el: '#app',
         router,

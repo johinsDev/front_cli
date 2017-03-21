@@ -1,35 +1,70 @@
 <template>
-    <!--
-        que dejmos hoy traer dato de la boleta por id , enviar datos de la facturacion , y dejar listo el modelo de datos
-        y traer datos del usuario , porque no dejar el perfil
-    -->
     <section>
-        <div >
-            <div class="boleta">
+        <div class="container">
 
-                <p>Datos seleccionados para la compra</p>
-                <p>Boleta: {{ticket.name}} </p>
-                <p>Precio: {{ticket.price}}</p>
-                <p>Etapa: 1</p>
-                <p>Cantidad: {{ quantity }}</p>
+            <div class="row justify-content-md-center">
+
+                <div class=" col-md-6  col-xl-6 ">
+
+                    <div id="accordion" role="tablist" aria-multiselectable="true">
+                        <ul>
+                            <li>
+                        <div class="card">
+                                <div class="card-header" role="tab" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                             Formulario 1
+                            </a>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="card-block">
+                                        <form-ticket v-for="n in quantity" :buyer="buyer" :ticket="n" :key="n">
+                                        </form-ticket>
+                                    </div>
+                                </div>
+                            </div>
+                            </li>
+                          
+                        </ul>
+
+                    </div>
+                </div>
+                  <div class=" col-md-2   col-xl-2 ">
+                    <div class="card " style="width: 300px">
+
+                        <div class="card-block shoping_card">
+                            <div class="title">             
+                            <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
+                            </div>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
+                            </p>
+                            <p class="card-text">
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar </h5>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="container_form">
-                Datos Personales
-                   <form-ticket v-for="n in quantity"
-                                :buyer="buyer"
-                                :ticket="n"
-                                :key="n">
-                    </form-ticket>
-                    <button class="button" @click="doPayment(buyer)">Ir a pagar</button>
-             </div>
-         </div>
-          <div class="logos_inferiores">
-             <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
-                 alt="">
-         </div>
-     </section>
- </template>
-
+        </div>
+        <div class="container botones">
+            <!--Botones-->
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <button @click="next('/')" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Anterior</button>
+                </div>
+                <div class="col-md-6">
+                    <button @click="next('/payment')" class="btn btn-primary">Siguiente <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
  <script>
      import {mapActions , mapGetters} from 'vuex'
      import formTicket from './form.vue'
@@ -56,38 +91,11 @@
 
  </script>
 
- <style  scoped>
-
- .boleta{
-
-     background: white;
-     border: 5px solid #000;
-    max-width: 800px;
-    margin: 40px auto;
-    font-size: 1.5em;
-
- }
-
- .container_form{
-     border: 5px solid #000;
-     background:white;
-     max-width: 800px;
-     margin: 50px auto;
-
- }
- .form{
-     width: 80%;
-     margin:  auto;
- }
- .button{
-     margin-bottom: 15px;
- }
-  /*logos*/
-     .logos_inferiores {
-         border-top: 2px solid #f3465c;
-         background: white;
-         position: absolute;
-         width: 95%;
-     }
-
- </style>
+<style scoped>
+    .container {
+        padding: 80px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+        margin-top: 70px;
+        background: white;
+    }
+</style>

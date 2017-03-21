@@ -1,30 +1,66 @@
 <template>
     <section>
-        <div class="logo">
-            <img src="../assets/logoClic.svg" alt="logo">
-            <div v-if="authenticate">
-                Hola {{ user.email }}
+        <div class="contenedor">
+            <div class="row centered">
+                <div class="logo">
+                    <img src="../assets/logoClic.svg" alt="logo">
+                   
+                </div>
             </div>
+            
+            <div class="nav_principal">      
+            <div class="row menu text-center ">
+            
+                <div class="col-md-3 ">
+                    <router-link class="link" exact to="/">
+                    <div class="texto">
+                    
+                        <h3>Paso 1</h3>
+                        <h4>Elegir Boletas</h4>
+                    </div>
+                    </router-link>
+                </div>
+                <div class="col-md-3">
+                    <router-link class="link" to="/payment">
+                    <div class="texto">
+                    
+                        <h3>Paso 2</h3>
+                        <h4>Ingreso de datos por boleta</h4>
+                    </div>
+                    </router-link>
+                </div>
+                <div class="col-md-3">
+                    <router-link class="link" to="/confirmation">
+                    <div class="texto">
+                        <h3>Paso 3</h3>
+                        <h4>Seleccionar medio de pago</h4>
+                    </div>
+                    </router-link>
+                </div>
+                <div class="col-md-3">
+                    <router-link class="link" to="/finish">
+                    <div class="texto">     
+                        <h3>Paso 4</h3>
+                        <h4>Finalización de compra</h4>
+                    </div>
+                    </router-link>
+                </div>
+            </div>
+
         </div>
-        <nav>
-            <router-link class="link"  exact to="/">Boletas</router-link>
-            <router-link class="link" to="/singin" v-if="!authenticate">Inicio de sesion</router-link>
-            <router-link class="link" to="/me" >Perfil</router-link>
-            <router-link class="link" to="/payment" >Datos de Compra</router-link>
-            <router-link class="link" to="/confirmation">Confirmacion de pago</router-link>
-
-            <a @click="logout" v-if="authenticate">Cerrar sesion</a>
-            <div class="errores" v-show="errors">
-                <ul>
-                    <li v-for="error in errors">{{ error.error }}</li>
-                </ul>
             </div>
 
-            <div v-if="checkoutStatus">
-                Pago exitoso felicidades
-            </div>
-            <router-view></router-view>
-        </nav>
+        <div class="errores" v-show="errors">
+            <ul>
+                <li v-for="error in errors">{{ error.error }}</li>
+            </ul>
+        </div>
+
+        <div v-if="checkoutStatus">
+            Pago exitoso felicidades
+        </div>
+        <router-view></router-view>
+
     </section>
 </template>
 
@@ -33,7 +69,7 @@
     export default {
         computed: {
             ...mapState(['authenticate' , 'token' , 'checkoutStatus']),
-            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' ,    checkoutStatus: 'checkoutStatus' , buyer: 'getBuyer'}),
+            ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' , checkoutStatus: 'checkoutStatus' , buyer: 'getBuyer'}),
         },
         methods: mapActions([
             'logout'
@@ -42,8 +78,7 @@
             this.$store.dispatch('getToken')
             this.$store.dispatch('getUser'),
             this.$store.dispatch('getInvoice'),
-            this.$store.dispatch('getBuyer'),
-            this.$store.dispatch('getNumTickets')
+            this.$store.dispatch('getBuyer')
         },
     }
 
@@ -51,87 +86,140 @@
 
 
 <style >
-/*Estilos menu superior*/
-.router-link-active{
-   text-decoration: underline;
-   color: black !important;
-   background: white;
-   border: 5px solid #000;
-}
-    nav {
-        padding: 30px;
+/*estilos generales*/
+/*carrito*/
+    .title{
+       background: white;
         height: 50px;
-        background: linear-gradient(to bottom, #ef167d , #ffc902);
         text-align: center;
-        font-style: inherit;
-        font-weight: 900;
-        box-shadow:  0px 1px grey;
-        cursor: pointer;
-        text-transform: uppercase;
+
+    }
+   .title .fa-shopping-cart{
+        color:  #1AC1B6;
+        font-size: 50px ;
         
     }
-    /*estilos logo*/
-    .logo{
-        height: 50px;
-         background:#ef167d ;
+    .shoping_card{
+        padding: 0;
     }
-    .logo img{
-        width: 200px;
-        margin: 20px auto;
-       
+    .shoping_card card_text{
+        paddign: 20px;
     }
- /*/logo*/
-/*estilos rutas*/
-    .link {
-        margin: auto 15px;
-        font-size:20px;
-        cursor: pointer;
+/*Cartas*/
+.card{
+            background: #D3E5E9;
+             box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+    }
+  .card-header{     
+         box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+        background: #1AC1B6; 
+        background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -o-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -moz-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
         
     }
-    .md-theme-default a:not(.md-button){
-        color: rgba(0,0,0, 0.3) ;
-    }
-    .link:hover {
+      
+    .collapsed{
         color: white;
+    }
+
+.footer-img{
+  
+        margin-top: 70px;
+        background: white;
+}
+   ul,li {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+body{
+   background:  #D3E5E9; 
+}
+.container.botones{
+        height: 10px;
+        margin-top: 0;
+        margin-bottom: 100px;
+}
+ .container {
+         font-family: 'Titillium Web', sans-serif;
+     padding: 80px;
+    background:white;
+        margin-top: 70px;
+     background: white;
+     width: 90%; 
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0   rgba(0,0,0,.12);
+    }
+/*barra de navegacion- cambiar a sass*/
+.nav_principal{
+     font-family: 'Titillium Web', sans-serif;
+     border: 1px solid #81C4CA ;
+     background: white;
+}
+.nav_principal h4 { 
+   font-size: 15px; 
+}
+ .nav_principal h3{
+   font-size: 20px; 
+ }
+    .texto{    
+        margin: 10px 0 0 20px;
+    }
+
+  .router-link-active .texto {
+       margin: 10px 0 0 20px;
+       border-radius: 5px;    
+       background: #2AA2AB;
+       color: white;
+    }
+    .link {
+        font-size: 10px;
         text-decoration: none;
     }
-    .errores{
-        background: red;
-    }
-/*estilos rutas*/
-
-    /*estilos Botones*/
-   .button {
+/*/ barra de navegacion*/    
   
-	background: none;
-	color:#000;
-	display:inline-block;
-	font-size:1.15em;
-	padding:10px 0;
-	text-align:center;
-	width:200px;
-	text-decoration:none;
-    cursor: pointer;
-    border: none;    
-    font-style: inherit;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-top: 40px;
-    margin-bottom: 0;
-    border: 5px solid #000;
+    .logo {
+        
+        height: 150px;
+        width: 100%;
+        background: #1AC1B6; 
+        background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -o-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -moz-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+    }
+    
+    .logo img {
+        width: 400px;
+        display: block;
+        margin: auto;
+    }
 
-}
-@media screen and (min-width: 1000px){
-    nav{
-        padding: 40px;
-        height: 30px;
+    /*Botones, pasar a sass*/
+    .btn-primary, .btn-primary:hover, .btn-primary:active{
+       background: #1AC1B6; 
+       border: 1px solid #1AC1B6;
+        background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -o-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: -moz-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+        background: linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+         width: 200px;
+    }
+ 
+
+    .btn-primary.plus, .btn-primary.minus, .btn-primary.plus:active{
+     background: none;
+     width: 50px;
+       font-size: 30px;
+       border: none;
+    }
+    .fa-plus, .fa-minus{
       
+     background: -webkit-linear-gradient(-90deg, #1AC1B6, #2AA2AB); 
+  -webkit-background-clip: text;
+  color: transparent;  
     }
-   
-    .logo img{
-        width: 200px;
-        margin: 20px auto;
-       
-    }
-}
+
+
 </style>
