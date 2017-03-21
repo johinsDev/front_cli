@@ -58,14 +58,9 @@
                 </div>
         </div>
     </div>
-<div class="container botones" >
-<!--Botones-->
-     <div class="row text-center ">  
-         <div class="col-md-12">
-        <button  @click="next('/')" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Anterior</button>       
-         </div>     
-     </div>
-        </div>
+
+         <buttoms :previusPage="'/payment'"></buttoms>
+     
         <footer class="footer-img">         
             <div class="row text-center">
                 <div class="col-md-12">
@@ -80,7 +75,7 @@
 <script>
     import creditCard from './Credit.vue'
     import { mapGetters } from 'vuex'
-
+    import buttoms from './Buttom.vue'
     export default {
         data() {
             return {
@@ -110,8 +105,9 @@
             })
         },
         components: {
-            creditCard
-        },
+            creditCard,
+            buttoms: buttoms
+        }
     }
 
 </script>

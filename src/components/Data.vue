@@ -17,7 +17,7 @@
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h5 class="mb-0">
-                                            <a data-toggle="collapse" style="color: white" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">
+                                            <a data-toggle="collapse" style="color: white" data-parent="#accordion" href="#nav"aria-expanded="true" aria-controls="collapseOne">
                            Datos de {{buyer[n - 1].name}} 
                           
                             </a>
@@ -57,17 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="container botones">
-            <!--Botones-->
-            <div class="row text-center">
-                <div class="col-md-6">
-                    <button @click="next('/')" class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i> Anterior</button>
-                </div>
-                <div class="col-md-6">
-                    <button @click="next('/payment')" class="btn btn-primary">Siguiente <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-                </div>
-            </div>
-        </div>
+        <buttoms :nextPage="'/confirmation'" :previusPage="'/'"></buttoms>
         <footer class="footer-img">
             <div class="row text-center">
                 <div class="col-md-12">
@@ -82,6 +72,7 @@
 <script>
     import { mapActions, mapGetters } from 'vuex'
     import formTicket from './form.vue'
+    import buttoms from './Buttom.vue'
     export default {
         methods: mapActions({
             doPayment: 'setDataPayment'
@@ -102,7 +93,8 @@
             })
         },
         components: {
-            formTicket: formTicket
+            formTicket: formTicket,
+            buttoms: buttoms
         }
     }
 
@@ -116,7 +108,8 @@
         background: white;
     }
     .alert{
-        
+        margin-left: auto;
+        margin-right: auto;
         width: 50%;
         text-align: center;
     }

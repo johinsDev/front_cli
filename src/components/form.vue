@@ -22,7 +22,7 @@
   <div class="form-group" v-show="ticket.category == 'estudiantes'">
     <p class="help-block">Carné Estudiantil</p>
     <label for="exampleInputFile">File input</label>
-    <input type="file"  id="exampleInputFile">
+    <input class="btn bnt-primary" type="file"  id="exampleInputFile">
    
   </div>
 
