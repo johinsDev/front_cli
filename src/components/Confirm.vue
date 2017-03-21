@@ -8,8 +8,8 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <i class="fa fa-credit-card" aria-hidden="true"></i>
+        <a data-toggle="collapse" style="color: white"  data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="fa fa-credit-card" aria-hidden="true"></i> Tarjeta de Credito
         </a>
       </h5>
     </div>
@@ -45,7 +45,7 @@
                             <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
                             </div>
                             <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>1 Boleta estudiante </h5>
+                                  <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>{{ quantity }} {{ticket.name}}</h5>
                             </p>
                             <p class="card-text">
                                 <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
@@ -66,6 +66,14 @@
          </div>     
      </div>
         </div>
+        <footer class="footer-img">         
+            <div class="row text-center">
+                <div class="col-md-12">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
+                 alt="">
+                </div>
+            </div>
+        </footer>
     </section>
 </template>
 
@@ -87,16 +95,23 @@
         },
         computed: mapGetters({
             invoice: 'getInvoice',
-            buyer: 'getBuyer'
-        }),
+            buyer: 'getBuyer',
+            ticket: 'getTicket',
+              quantity: 'getNumTickets'
+        }),  
+        
+        created() {
+            this.$store.dispatch('getTicket')
+        },
+        
+        beforeRouteEnter (to, from, next) {
+            next(vm => {
+                !vm.$store.state.tickets.add ? next() : next('/')
+            })
+        },
         components: {
             creditCard
         },
-        /* beforeRouteEnter (to, from, next) {
-                next(vm => {
-                    !vm.$store.state.auth.authenticate ? next('/singin') : next('')
-                })
-            }*/
     }
 
 </script>
