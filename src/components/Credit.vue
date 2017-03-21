@@ -5,28 +5,30 @@
                     <input type="text" class="form-control" id="names" placeholder="Nombre" v-model="user.name">
                 </div>
                 <div class="form-group">
+                    <label for="date">Numero de Documento Titular</label>
+                    <input type="text" class="form-control"  placeholder="Cedula titular"  v-model="user.identificationNumber">
+                </div>
+                 <div class="form-group">
+                    <label for="email">Correo electronico</label>
+                    <input type="email" class="form-control" id="email" placeholder="email"  v-model="user.email">
+                </div>
+                <div class="form-group">
                     <label for="num">Numero Tarjeta</label>
                     <input type="text" class="form-control" id="num" placeholder="Numero" v-model="card.number">
                 </div>
                 <div class="tarjetas">
                     <img src="../../assets/logos-tarjetas-credito.png" width="200" alt="tarjetas de credito">
                   </div> 
-                 <div class="form-group">
-                    <label for="date">Fecha de vencimiento</label>
+                 <div class="form-group" style="width: 40%; display: inline-block">
+                    <label for="date" >Fecha de vencimiento</label>
                     <input type="text" class="form-control" id="date" placeholder="Fecha" v-model="card.expirationDate">
                 </div>
-                <div class="form-group">
-                    <label for="date">Numero de Documento Titular</label>
-                    <input type="text" class="form-control"  placeholder="Cedula titular"  v-model="user.identificationNumber">
-                </div>
-                 <div class="form-group">
+                
+                 <div class="form-group" style="width: 40%; display: inline-block">
                     <label for="cvv">cvv</label>
-                    <input type="number" class="form-control" id="cvv" placeholder="email">
+                    <input type="number" class="form-control" id="cvv" placeholder="cvv">
                 </div>
-                <div class="form-group">
-                    <label for="email">Correo electronico</label>
-                    <input type="number" class="form-control" id="email" placeholder="email"  v-model="user.email">
-                </div>
+               
                 <button class="btn btn-primary">Proceder al pago</button>
                 
 </form>

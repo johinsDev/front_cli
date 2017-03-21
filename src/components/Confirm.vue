@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="row justify-content-md-center">
-          <div class="col-md-6 col-md-offset-3 col-xl-6">
+          <div class="col-md-6  col-xl-6">
               <div id="accordion" role="tablist" aria-multiselectable="true">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
@@ -13,7 +13,6 @@
         </a>
       </h5>
     </div>
-
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
           <credit-card></credit-card>
@@ -109,6 +108,7 @@
             buttoms: buttoms
         }
     }
+
 
 </script>
 <style scoped>
