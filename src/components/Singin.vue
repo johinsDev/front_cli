@@ -52,7 +52,6 @@
         beforeRouteEnter(to, from, next) {
             next(vm => {
                 if (vm.$store.state.tickets.added) {
-                    !vm.$store.state.auth.authenticate ? next() : next('/me')
                 } else {
                     next('/')
                 }
