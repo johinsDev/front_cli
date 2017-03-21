@@ -87,6 +87,7 @@
                     </div>
                     
                 </div>
+                
                 <div class="col col-md-2  col-xl-2 ">
                     <div class="card " style="width: 300px">
 
@@ -95,7 +96,7 @@
                             <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
                             </div>
                             <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Nombre </h5>
+                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>{{num_tickets}} {{added.name}} </h5>
                             </p>
                             <p class="card-text">
                                 <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
