@@ -43,7 +43,7 @@
                </div>
                 <div class="col-md-12"  v-show="checkoutStatus == 'pending'">
                   <h2 style="text-align: center">Tu transaccion esta pendiete de pago <a :href="urls.url" target="_blank">ir a url de pago</a></h2>
-                    <a :href="urls.file">Descargar tiquete de pago</a>
+                    <a  :href="urls.file">Descargar tiquete de pago</a>
                 </div>
               </div>
             </div>
