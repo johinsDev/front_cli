@@ -7,7 +7,12 @@ const state = {
     token_card : '',
     card: {}
 };
-
+//cosas que no me gustas el checkout final
+//el agregar la tarjeta
+//algunas cosas del localstorage
+//algunos componentes por reusar
+//dividar os componentes en carpetas
+//el orden en que se llaman algune¿os datos en los componentes
 //getters
 
 const getters = {
@@ -23,7 +28,8 @@ const actions = {
         let card = data.card;
         card.identificationNumber = data.user.identificationNumber;
         card.name = data.user.name;
-        let user = data.user
+        let user = data.user;
+        let payment_method = data.payment_method
         Card.create(card , (data) => {
             commit(types.SET_TOKEN_CARD, data.card.creditCardTokenId);
             commit(types.SET_CARD, data.card);
@@ -32,7 +38,8 @@ const actions = {
                 ticket: localStorage.getItem('ticket'),
                 data: rootState.data.buyer,
                 quantity: rootState.tickets.num_tickets,
-                user: user
+                user: user,
+                payment_method: payment_method
             })
         }, (error) => {
             console.log(error)

@@ -23,13 +23,13 @@
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          PSE
+          Efecty y Baloto
         </a>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
       <div class="card-block">
-   
+            <cash :data="buyer" :ticket="ticket" :quantity="quantity"></cash>
       </div>
     </div>
   </div>
@@ -64,8 +64,11 @@
 
 <script>
     import creditCard from './Credit.vue'
+    import Cash from './Cash.vue'
     import { mapGetters } from 'vuex'
     import buttoms from './Buttom.vue'
+
+
     export default {
         data() {
             return {
@@ -103,7 +106,8 @@
         },
         components: {
             creditCard,
-            buttoms: buttoms
+            buttoms: buttoms,
+            cash: Cash
         }
     }
 

@@ -13,7 +13,6 @@
                 <div class="col-md-3 ">
                     <router-link class="link" exact to="/">
                     <div class="texto">
-                    
                         <h3>Paso 1</h3>
                         <h4>Elegir Boletas</h4>
                     </div>
@@ -22,7 +21,6 @@
                 <div class="col-md-3">
                     <router-link class="link" to="/payment">
                     <div class="texto">
-                    
                         <h3>Paso 2</h3>
                         <h4>Ingreso de datos por boleta</h4>
                     </div>
@@ -54,9 +52,8 @@
                 <li v-for="error in errors">{{ error.error }}</li>
             </ul>
         </div>
-
         <router-view></router-view>
-        
+
         <footer-clic></footer-clic>
     </section>
 </template>
@@ -71,7 +68,8 @@
             ...mapGetters({'errors': 'getErrors' , 'authenticate':'isAuthenticate' , 'user': 'getUser' , checkoutStatus: 'checkoutStatus' , buyer: 'getBuyer'}),
         },
         methods: mapActions([
-            'logout'
+            'logout',
+            'emptyCart'
         ]),
         created() {
             this.$store.dispatch('getToken')

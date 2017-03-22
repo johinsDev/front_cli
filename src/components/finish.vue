@@ -33,15 +33,19 @@
              <!--Si el pago fue rechasado-->   
               <div class="row justify-content-md-center" v-else>
                    <div class="col-md-12">
-                    <h2 style="text-align: center"><i class="fa fa-frown-o" aria-hidden="true"></i> El pago fue rechazado</h2>
+                    <h2 style="text-align: center"><i class="fa fa-frown-o" aria-hidden="true"></i> Tu pago esta {{ state }}</h2>
                     <br/>
                </div>
 
-               <div class="col-md-12">       
-                <h2 style="text-align: center">Por favor intenta nuevamente o comunicate con tu sucursal bancaria</h2>  
-                <router-link class="link" to="/confirmation"><h3>Intentar nuevamente</h3></router-link>
+               <div class="col-md-12"  v-show="checkoutStatus == 'failed'">
+                    <h2 style="text-align: center">Por favor intenta nuevamente o comunicate con tu sucursal bancaria</h2>
+                    <router-link class="link" to="/confirmation"><h3>Intentar nuevamente</h3></router-link>
                </div>
-            </div>    
+                <div class="col-md-12"  v-show="checkoutStatus == 'pending'">
+                  <h2 style="text-align: center">Tu transaccion esta pendiete de pago <a :href="urls.url" target="_blank">ir a url de pago</a></h2>
+                    <a :href="urls.file">Descargar tiquete de pago</a>
+                </div>
+              </div>
             </div>
         </div>
     </section>
@@ -54,7 +58,9 @@
         computed: mapGetters({
             checkoutStatus : 'checkoutStatus',
             tickets: 'getTicketsBuy',
-            order: 'getOrder'
+            order: 'getOrder',
+            urls: 'getUrls',
+            state: 'getState'
         }),
         beforeRouteEnter(to, from, next) {
             next(vm => {

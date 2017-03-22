@@ -5,7 +5,11 @@ import redirect from '../../main'
 //states
 
 const state = {
-    user: [],
+    auth: {
+        name: '',
+        identificationNumber: '',
+        email: ''
+    },
     authenticate: false,
     token:''
 };
@@ -13,7 +17,7 @@ const state = {
 //getters
 
 const getters = {
-    getUser: (state) => state.user,
+    getUser: (state) => state.auth,
     isAuthenticate: (state) => state.authenticate,
     getToken: (state) => state.token
 };

@@ -39,6 +39,11 @@ const actions = {
            commit(types.GET_NUM_TICKETS , num)
        })
     },
+    emptyCart ({commit}) {
+        ticket.empty(() => {
+            commit(types.EMPTY_CART)
+        })
+    },
     plus({ commit , state , rootState , dispatch}) {
         let num = parseInt(state.num_tickets) + 1;
         if (num  > rootState.data.buyer.length ){
@@ -93,6 +98,10 @@ const mutations = {
     },
     [types.SET_NUM_TICKETS] (state, num) {
         state.num_tickets = num
+    },
+    [types.EMPTY_CART] (state) {
+        state.num_tickets = null;
+        state.added = null;
     },
 };
 

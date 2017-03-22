@@ -34,6 +34,11 @@ export default  {
     setNum: function (num , cb) {
         localStorage.setItem('num' , num);
         return cb(num)
+    },
+    empty: (cb) => {
+        localStorage.removeItem('num');
+        localStorage.removeItem('ticket');
+        cb()
     }
 
 }
