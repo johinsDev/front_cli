@@ -41,7 +41,6 @@ const actions = {
     },
     plus({ commit , state , rootState , dispatch}) {
         let num = parseInt(state.num_tickets) + 1;
-        console.log(rootState.data.buyer);
         if (num  > rootState.data.buyer.length ){
             rootState.data.buyer.push({
                 name: '',
@@ -66,7 +65,7 @@ const actions = {
         })
     },
     minus({ commit , state}) {
-        let num = state.num_tickets > 0 ? parseInt(state.num_tickets) - 1: 0;
+        let num = state.num_tickets > 1 ? parseInt(state.num_tickets) - 1: 1;
         ticket.setNum(num , (num) => {
             commit(types.SET_NUM_TICKETS , num)
         })

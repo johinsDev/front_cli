@@ -4,7 +4,6 @@
             <div class="row centered">
                 <div class="logo">
                     <img src="dist/logoClic.svg" alt="logo">
-                   
                 </div>
             </div>
             
@@ -55,13 +54,17 @@
                 <li v-for="error in errors">{{ error.error }}</li>
             </ul>
         </div>
-        <router-view></router-view>
 
+        <router-view></router-view>
+        
+        <footer-clic></footer-clic>
     </section>
 </template>
 
 <script>
     import { mapGetters, mapState, mapActions } from 'vuex'
+    import Footer from './components/Footer.vue'
+
     export default {
         computed: {
             ...mapState(['authenticate' , 'token' , 'checkoutStatus']),
@@ -77,6 +80,9 @@
             this.$store.dispatch('getBuyer'),
             this.$store.dispatch('getNumTickets')
         },
+        components:{
+            footerClic: Footer
+        }
     }
 
 </script>

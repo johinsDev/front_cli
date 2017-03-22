@@ -8,8 +8,8 @@
                             <div class="card-header" role="tab" id="headingOne">
                                 <h5 class="mb-0">
                                     <a data-toggle="collapse" style="color: white" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                       Etapa 1
-                        </a>
+                                        Etapa 1
+                                    </a>
                                 </h5>
                             </div>
 
@@ -30,13 +30,12 @@
                                                     <p class="card-text">
                                                         <h3> ${{ ticket.price }}</h3>
                                                     </p>
-                                                    <div v-if="ticket._id == added.id ">
+                                                    <div v-if="ticket._id == added.id && num_tickets">
                                                         <p>Selecciona el numero de boletas que quieres agregar</p>
                                                         <button type="button" @click="plus()" class="btn btn-primary plus"><i class="fa fa-plus" aria-hidden="true"></i></button>                                                        {{ num_tickets }}
                                                         <button type="button" @click="minus()" class="btn btn-primary minus"><i class="fa fa-minus" aria-hidden="true"></i></button>
                                                     </div>
-                                                    <button type="button" @click="add(ticket._id)" class="btn btn-primary ">Agregar</button>
-
+                                                    <button type="button" @click="add(ticket._id)" class="btn btn-primary" v-show="ticket._id != added.id">Agregar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,6 +45,7 @@
 
                             </div>
                         </div>
+
                         <!--Segunda Etapa-->
                         <div class="card">
                             <div class="card-header" role="tab" id="headingTwo">
@@ -74,7 +74,6 @@
                                                         <h3> ${{ ticket.price }}</h3>
                                                     </p>
                                                     <p>No Disponible </p>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -132,14 +131,6 @@
         </div>
 
         <buttoms :nextPage="'/payment'"></buttoms>
-        <footer class="footer-img">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/clic-2017.appspot.com/o/logos-%20(1).png?alt=media&token=c824bb64-740e-4ae3-881d-79cfa20cdca4"
-                        alt="">
-                </div>
-            </div>
-        </footer>
     </section>
 
 </template>
