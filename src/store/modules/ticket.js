@@ -83,7 +83,11 @@ const mutations = {
         state.all = tickets;
     },
     [types.GET_TICKET] : (state , ticket) => {
-      state.added = ticket
+      state.added = ticket || ''
+      if(!ticket){
+           state.num_tickets = 0;
+      }
+     
     },
     [types.ADD_TICKET] (state,ticket) {
         const record = state.added.id == ticket.id;
@@ -100,8 +104,8 @@ const mutations = {
         state.num_tickets = num
     },
     [types.EMPTY_CART] (state) {
-        state.num_tickets = null;
-        state.added = null;
+        state.num_tickets = '';
+        state.added = '';
     },
 };
 

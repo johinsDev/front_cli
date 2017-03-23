@@ -1,38 +1,55 @@
 <template>
     <section>
-
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-md-6  col-xl-6">
-                    <div id="accordion" role="tablist" aria-multiselectable="true">
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingOne">
-                                <h5 class="mb-0">
-                                    <a data-toggle="collapse" style="color: white" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <i class="fa fa-credit-card" aria-hidden="true"></i> Tarjeta de Credito
-                                    </a>
-                                </h5>
-                            </div>
-                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                                <div class="card-block">
-                                    <credit-card></credit-card>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" role="tab" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <a class="collapsed" style="color: white" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        Efecty y Baloto
-                                        </a>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                <div class="card-block">
-                                    <cash :data="buyer" :ticket="ticket" :quantity="quantity"></cash>
-
-                                </div>
+    <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-md-6  col-xl-6">
+              <div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a data-toggle="collapse" style="color: white"  data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <i class="fa fa-credit-card" aria-hidden="true"></i> Tarjeta de Credito
+        </a>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+      <div class="card-block">
+          <credit-card :data="buyer" :ticket="ticket" :quantity="quantity"></credit-card>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Efecty y Baloto
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="card-block">
+            <cash :data="buyer" :ticket="ticket" :quantity="quantity"></cash>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+      <div class="card-header" role="tab" id="headingThree">
+          <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                  PSE
+              </a>
+          </h5>
+      </div>
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="card-block">
+              <bank-transfer :data="buyer" :ticket="ticket" :quantity="quantity"></bank-transfer>
+          </div>
+      </div>
+  </div>
+</div>
+          </div>
+             <div class="col col-md-2  col-xl-2 ">
+                    <div class="card " style="width: 300px">
 
                             </div>
 
@@ -54,10 +71,10 @@
 <script>
     import creditCard from './Credit.vue'
     import Cash from './Cash.vue'
+    import bankTransfer from './BankTransfer.vue'
     import { mapGetters } from 'vuex'
     import buttoms from './Buttom.vue'
     import shoppingcart from './shoppingCart.vue'
-
 
     export default {
         data() {
@@ -99,7 +116,9 @@
             creditCard,
             buttoms: buttoms,
             cash: Cash,
-            shoppingcart: shoppingcart
+            shoppingcart: shoppingcart,
+            bankTransfer: bankTransfer
+
         }
     }
 

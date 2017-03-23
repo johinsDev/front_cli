@@ -11,7 +11,8 @@ const state = {
     state: '',
     urlPdf: '',
     urlPayment: '',
-    payment_method: ''
+    payment_method: '',
+    banks: []
 };
 
 //getters
@@ -28,6 +29,7 @@ const getters = {
     },
     getState: state => state.state,
     getPaymentMethod: state => state.payment_method,
+    getBankList: state => state.banks
 };
 
 
@@ -40,6 +42,12 @@ const actions = {
             data,
             (response) => commit(types.CHECKOUT_SUCCESS ,response),
             (error) => commit(types.CHECKOUT_FAILURE, error)
+        )
+    },
+    getBankList({commit}) {
+
+        checkout.getBankList(
+            (response) => commit(types.LIST_BANKS ,response)
         )
     },
     setPaymentMethod ({commit} , value){
@@ -93,7 +101,7 @@ const mutations = {
         //esto lo podemos llamar en una funcion
        if (data.status == 'APPROVED'){
            localStorage.removeItem('ticket');
-           localStorage.removeItem('num_tickets');
+           localStorage.removeItem('num');
            localStorage.removeItem('buyer');
            state.ticketsBuy = data.data.tickets;
            state.order = data.data.order;
@@ -102,12 +110,17 @@ const mutations = {
        }else if(data.status == "PENDING")
        {
            localStorage.removeItem('ticket');
-           localStorage.removeItem('num_tickets');
+           localStorage.removeItem('num');
            localStorage.removeItem('buyer');
            state.ticketsBuy = data.data.tickets;
            state.order = data.data.order;
            state.checkoutStatus = 'pending';
            state.state = 'pendiente';
+
+           if (data.bankUrl){
+               window.open(data.bankUrl, '_blank');
+           }
+
            if (data.backUrl){
                 state.urlPayment = data.backUrl;
            }
@@ -126,6 +139,10 @@ const mutations = {
 
     [types.CHECKOUT_FAILURE] (state , error ) {
         state.checkoutStatus = 'failed';
+    },
+    [types.LIST_BANKS] (state , data ) {
+
+        state.banks = data.banks;
     },
 };
 

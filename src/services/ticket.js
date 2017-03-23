@@ -20,7 +20,8 @@ export default  {
     Vue.http.get(API.TIKECT_URL + '/' + window.localStorage.getItem('ticket'))
         .then((response) => {
             let ticket = response.data.ticket;
-            ticket['id'] = window.localStorage.getItem('ticket');
+            if(response.data.ticket){
+            ticket['id'] = window.localStorage.getItem('ticket');}
             cb(ticket);
         })
         .catch((err) => {
