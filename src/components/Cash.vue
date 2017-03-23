@@ -5,18 +5,24 @@
         <formUser :user="user"></formUser>
         <input type="radio" v-model="payment_method" value="baloto">Baloto
         <input type="radio" v-model="payment_method" value="efecty">Efecty
-        <input class="btn btn-primary" type="submit" value="Pagar">
-    </form>
+        <div v-if="show">
+            <p class="text_proc">Procesando pago</p>
+            <div class="loader">Loading...</div>
+        </div>
+        <input class="btn btn-primary" @click="show = ! show" type="submit" value="Pagar" >
+        </form>
+
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex'
+    import { mapActions, mapGetters } from 'vuex'
     import formUser from './formUser.vue'
 
-    export default{
+    export default {
         data() {
             return {
                 payment_method: 'baloto',
+                show: false
             }
         },
         props: ['data', 'quantity', 'ticket'],
@@ -26,8 +32,9 @@
         computed: mapGetters({
             user: 'getUser',
         }),
-        components:{
-            formUser:formUser
+        components: {
+            formUser: formUser
         }
     }
+
 </script>

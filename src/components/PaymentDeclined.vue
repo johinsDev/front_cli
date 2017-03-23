@@ -4,16 +4,17 @@
             <div class="col-md-12">
                 <h2 style="text-align: center">Pago {{ state }}</h2>
                 <br/>
-                <h4> Datos de compra</h4>
+                <div v-show="checkoutStatus != 'failed'">
+                     <h4> Datos de compra</h4>
                 <h3><i class="fa fa-check" aria-hidden="true"></i> Codigo: {{ order.id }}</h3>
                 <h3><i class="fa fa-check" aria-hidden="true"></i> Total valor pendiente: ${{ order.total }}</h3>
                 <h3><i class="fa fa-check" aria-hidden="true"></i>  Cantidad de boletas {{ order.quantity
                     }}</h3>
-
+                </div>
             </div>
             <div class="col-md-12" v-show="checkoutStatus == 'failed'">
                 <h2 style="text-align: center">Por favor intenta nuevamente o comunicate con tu sucursal bancaria</h2>
-                <router-link class="link" to="/confirmation">
+                <router-link class="link" to="/confirmation" style="text-align: center">
                     <h3>Intentar nuevamente</h3>
                 </router-link>
             </div>
@@ -40,7 +41,7 @@
             </div>
              
         </div>
-         <buttoms :nextPage="'/'" :icon="'fa fa-home'" style="margin: 40px" :name="'Ir al inicio'"></buttoms>
+         <buttoms :nextPage="'/'" :icon="'fa fa-home'" style="margin: 40px auto 40px 400px" :name="'Ir al inicio'"></buttoms>
           
     </section>
 </template>

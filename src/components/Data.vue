@@ -39,25 +39,8 @@
                      
                 </div>
                 <div class=" col-md-2   col-xl-2 ">
-                    <div class="card " style="width: 300px">
-
-                        <div class="card-block shoping_card">
-                            <div class="title">
-                                <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
-                            </div>
-                            <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>{{ quantity }} {{ticket.name}}</h5>
-                            </p>
-                            <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
-                            </p>
-                            <p class="card-text">
-                                <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar {{ total }}</h5>
-                            </p>
-                        </div>
-                    </div>
-                    <button  style="margin: 40px"  class="btn btn-primary" @click="doPayment(buyer)">Ir a pagar</button>
-                  
+                    <shoppingcart :numtickets="quantity" :addedname="ticket.name" :total="total"></shoppingcart>
+                    <button  style="margin: 40px"  class="btn btn-primary" @click="doPayment(buyer)">Ir a pagar</button>                
                 </div>
             </div>
         </div>
@@ -69,6 +52,7 @@
     import { mapActions, mapGetters } from 'vuex'
     import formTicket from './form.vue'
     import buttoms from './Buttom.vue'
+    import shoppingcart from './shoppingCart.vue'
     export default {
         methods: mapActions({
             doPayment: 'setDataPayment'
@@ -91,7 +75,8 @@
         },
         components: {
             formTicket: formTicket,
-            buttoms: buttoms
+            buttoms: buttoms,
+            shoppingcart: shoppingcart
         }
     }
 

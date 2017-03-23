@@ -17,7 +17,13 @@
                     <label for="cvv">cvv</label>
                     <input type="number" class="form-control" id="cvv" placeholder="cvv">
                 </div>
-                <button class="btn btn-primary">Pagar</button>
+                <div v-if="show"> 
+                    <p class="text_proc">Procesando pago</p>
+                     <div class="loader" >Loading...</div>
+                </div>
+               
+
+                <button v-on:click="show = !show" class="btn btn-primary">Pagar</button>
                 
 </form>
 
@@ -36,6 +42,7 @@
                     number: '',
                     expirationDate: ''
                 },
+                show: false
             }
         },
         computed: mapGetters({
@@ -55,17 +62,8 @@
 </script>
 
 <style scoped>
-    .container_form{
-   
-    background:white;
-    max-width: 800px;
-    margin: 50px auto;
-
+.text_proc{
+    font-size: 20px;
+    text-align: center;
 }
-.form{
-    width: 80%;
-    margin:  auto;
-   
-}
-
 </style>

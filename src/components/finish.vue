@@ -2,7 +2,7 @@
     <section>
         <div class="container" >
             <!--Si el pago es exitoso-->
-                <Successful ></Successful>
+                <Successful :order='order' :tickets='tickets' :urls='urls' :checkoutStatus='checkoutStatus' :state='state'></Successful>
              <!--Si el pago fue rechasado-->   
 
               <Declined :order='order' :tickets='tickets' :urls='urls' :checkoutStatus='checkoutStatus' :state='state'></Declined>

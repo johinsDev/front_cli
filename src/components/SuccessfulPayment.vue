@@ -1,4 +1,6 @@
 <template>
+    <section>
+
   <div class="row justify-content-md-center" v-if="checkoutStatus == 'successful'">
                <div class="col-md-12">
                     <h2 style="text-align: center"><i class="fa fa-smile-o" aria-hidden="true"></i> Pago Exitoso</h2>
@@ -26,14 +28,22 @@
                  </div>
                <router-link class="link" to="/"><h3>Regresar al inicio</h3></router-link>
             </div>
+    </section>
 
 </template>
 <script>
-    
+       import buttoms from './Buttom.vue'
+    export default {
+        props: ['state', 'checkoutStatus', 'urls', 'order', 'tickets'],
+      components: {
+            buttoms: buttoms
+        }
+    }
+
 </script>
 
 
-<style lang="">
+<style>
     
 
 </style>

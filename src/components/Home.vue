@@ -55,7 +55,7 @@
                                         aria-controls="collapseTwo">
                                         Etapa 2
                                         </a>
-                                       <a style="margin-left:150px"><i class="fa fa-calendar" aria-hidden="true"></i> Mayo 1 a Junio 1 </a>
+                                        <a style="margin-left:150px"><i class="fa fa-calendar" aria-hidden="true"></i> Mayo 1 a Junio 1 </a>
                                 </h5>
                             </div>
                             <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -91,45 +91,8 @@
                 </div>
 
                 <div class="col col-md-2  col-xl-2 ">
-                    <div class="card " style="width: 300px" v-if="num_tickets==0">
-
-                        <div class="card-block shoping_card">
-                            <div>
-                                <div class="title">
-                                    <h4 class="card-title"><i class="fa fa-cart-plus" aria-hidden="true" style="font-size: 50px"></i></i>
-                                    </h4>
-                                </div>
-                                <p class="card-text">
-                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>No tienes compras</h5>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <div class="card " style="width: 300px" v-else>
-
-                        <div class="card-block shoping_card">
-                            <div>
-                                <div class="title">
-                                    <h4 class="card-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i></h4>
-                                </div>
-                                <p class="card-text">
-                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>{{num_tickets}} {{added.name}} </h5>
-                                </p>
-                                <p class="card-text">
-                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
-                                </p>
-                                <p class="card-text">
-                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar {{ total }}</h5>
-                                </p>
-                            </div>
-
-                        </div>
-                        
-                    </div>
-                    <buttoms :nextPage="'/payment'"  style="margin: 40px" :name="'Continuar compra'"></buttoms>
+                    <shoppingcart :numtickets="num_tickets" :addedname="added.name" :total="total"></shoppingcart>
+                    <buttoms :nextPage="'/payment'" style="margin: 40px" :name="'Continuar compra'"></buttoms>
                 </div>
             </div>
         </div>
@@ -140,6 +103,7 @@
 <script>
     import { mapGetters, mapActions } from 'vuex'
     import buttoms from './Buttom.vue'
+    import shoppingcart from './shoppingCart.vue'
     export default {
         computed: mapGetters({
             tickets: 'allTickets',
@@ -155,39 +119,13 @@
         ]),
         created() {
             this.$store.dispatch('getAllTickets'),
-            this.$store.dispatch('getTicket')
+                this.$store.dispatch('getTicket')
         },
         components: {
-            buttoms: buttoms
+            buttoms: buttoms,
+            shoppingcart: shoppingcart
         }
     }
 
 </script>
 
-<style scoped>
-    /*Estilos Boletas pasar a sass*/
-    
-    .card.boleta {
-        background: white;
-        margin-top: 20px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
-    }
-    .card-title {
-        text-align: center;
-        font-size: 30px;
-        font-weight: bold;
-    }    
-    .card-subtitle {
-        text-align: center;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    /*logo boleta*/
-    
-    .logo_boleta {
-        position: absolute;
-        right: 0;
-        width: 130px;
-        top: 0;
-    }
-</style>
