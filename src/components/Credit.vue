@@ -1,5 +1,7 @@
 <template>
-    <form  @submit.prevent="create({card , user , payment_method})">
+    <form  @submit.prevent="doPayment({
+                     card:card, user: user, ticket: ticket.id, data: data, quantity: quantity, payment_method:payment_method
+                    })">
                 <formUser :user="user"></formUser>
                 <div class="form-group">
                     <label for="num">Numero Tarjeta</label>
@@ -15,7 +17,7 @@
                 
                  <div class="form-group" style="width: 40%; display: inline-block">
                     <label for="cvv">cvv</label>
-                    <input type="number" class="form-control" id="cvv" placeholder="cvv">
+                    <input type="number" class="form-control" id="cvv" placeholder="cvv" v-model="card.securityCode">
                 </div>
                 <button class="btn btn-primary">Pagar</button>
                 
@@ -31,20 +33,20 @@
         data() {
             return {
                 card: {
-                    payerId: '10',
-                    paymentMethod: 'VISA',
+                    securityCode: '',
                     number: '',
                     expirationDate: ''
                 },
             }
         },
+        props: ['data', 'quantity', 'ticket'],
         computed: mapGetters({
             user: 'getUser',
             payment_method: 'getPaymentMethod'
         }),
         methods: {
             ...mapActions({
-                create: 'setCard',
+                doPayment: 'checkout',
                 validateCard: 'setPaymentMethod'
             }),
         },

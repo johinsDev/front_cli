@@ -15,7 +15,7 @@
     </div>
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
-          <credit-card></credit-card>
+          <credit-card :data="buyer" :ticket="ticket" :quantity="quantity"></credit-card>
       </div>
     </div>
   </div>
