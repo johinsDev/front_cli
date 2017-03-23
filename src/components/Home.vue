@@ -6,10 +6,11 @@
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="card">
                             <div class="card-header" role="tab" id="headingOne">
-                                <h5 class="mb-0">
+                                <h5 class="mb-0" style="color: white">
                                     <a data-toggle="collapse" style="color: white" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         Etapa 1
                                     </a>
+                                    <a style="margin-left:150px"><i class="fa fa-calendar" aria-hidden="true"></i> Marzo 1 a Abril 30</a>
                                 </h5>
                             </div>
 
@@ -49,11 +50,12 @@
                         <!--Segunda Etapa-->
                         <div class="card">
                             <div class="card-header" role="tab" id="headingTwo">
-                                <h5 class="mb-0">
+                                <h5 class="mb-0" style="color: white">
                                     <a class="collapsed" style="color: white" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                                         aria-controls="collapseTwo">
                                         Etapa 2
                                         </a>
+                                       <a style="margin-left:150px"><i class="fa fa-calendar" aria-hidden="true"></i> Mayo 1 a Junio 1 </a>
                                 </h5>
                             </div>
                             <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -125,12 +127,12 @@
                             </div>
 
                         </div>
+                        
                     </div>
+                    <buttoms :nextPage="'/payment'"  style="margin: 40px" :name="'Continuar compra'"></buttoms>
                 </div>
             </div>
         </div>
-
-        <buttoms :nextPage="'/payment'"></buttoms>
     </section>
 
 </template>

@@ -27,7 +27,7 @@
                                         <div class="card-block">
                                             <form-ticket :buyer="buyer" :ticket="ticket" :numTicket="n" :key="n">
                                             </form-ticket>
-                                            <button class="btn btn-primary" @click="doPayment(buyer)">Ir a pagar</button>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -36,6 +36,7 @@
                         </ul>
 
                     </div>
+                     
                 </div>
                 <div class=" col-md-2   col-xl-2 ">
                     <div class="card " style="width: 300px">
@@ -55,10 +56,12 @@
                             </p>
                         </div>
                     </div>
+                    <button  style="margin: 40px"  class="btn btn-primary" @click="doPayment(buyer)">Ir a pagar</button>
+                  
                 </div>
             </div>
         </div>
-        <buttoms :nextPage="'/confirmation'" :previusPage="'/'"></buttoms>
+        <buttoms :previusPage="'/'" ></buttoms>
     </section>
 </template>
 

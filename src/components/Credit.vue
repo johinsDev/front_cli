@@ -17,7 +17,7 @@
                     <label for="cvv">cvv</label>
                     <input type="number" class="form-control" id="cvv" placeholder="cvv">
                 </div>
-                <button class="btn btn-primary">Proceder al pago</button>
+                <button class="btn btn-primary">Pagar</button>
                 
 </form>
 

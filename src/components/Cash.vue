@@ -5,7 +5,7 @@
         <formUser :user="user"></formUser>
         <input type="radio" v-model="payment_method" value="baloto">Baloto
         <input type="radio" v-model="payment_method" value="efecty">Efecty
-        <input type="submit" value="Enviar datos">
+        <input class="btn btn-primary" type="submit" value="Pagar">
     </form>
 </template>
 
