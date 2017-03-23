@@ -17,10 +17,15 @@ Vue.http.interceptors.push(function(request, next) {
 
 export default  {
     buyTicket: function (data , cb , cbError) {
-        console.log(data);
         Vue.http.post(API.CHECKOUT_URL + '?payment_method=' + data.payment_method , data)
             .then((response) =>  cb(response.data))
             .catch((error) => cbError(error))
     },
+
+    getBankList: function (cb) {
+        Vue.http.get(API.GET_BANK_LIST)
+            .then((response) =>  cb(response.data))
+            .catch((error) => cb(error))
+    }
 }
 

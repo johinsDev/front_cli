@@ -33,7 +33,20 @@
       </div>
     </div>
   </div>
- 
+  <div class="card">
+      <div class="card-header" role="tab" id="headingThree">
+          <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                  PSE
+              </a>
+          </h5>
+      </div>
+      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="card-block">
+              <bank-transfer :data="buyer" :ticket="ticket" :quantity="quantity"></bank-transfer>
+          </div>
+      </div>
+  </div>
 </div>
           </div>
              <div class="col col-md-2  col-xl-2 ">
@@ -65,9 +78,9 @@
 <script>
     import creditCard from './Credit.vue'
     import Cash from './Cash.vue'
+    import bankTransfer from './BankTransfer.vue'
     import { mapGetters } from 'vuex'
     import buttoms from './Buttom.vue'
-
 
     export default {
         data() {
@@ -107,7 +120,8 @@
         components: {
             creditCard,
             buttoms: buttoms,
-            cash: Cash
+            cash: Cash,
+            bankTransfer: bankTransfer
         }
     }
 
