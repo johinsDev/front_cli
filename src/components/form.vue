@@ -26,7 +26,7 @@
 
         </div>
 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-camera" aria-hidden="true"></i>Tomar foto</button>
+        <button v-show="ticket.category == 'estudiantes'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-camera" aria-hidden="true"></i>Tomar foto</button>
 
 
         <div id="myModal" class="modal fade" role="dialog">
@@ -167,6 +167,8 @@
     
       var data = canvas.toDataURL('image/png');
       photo.setAttribute('src', data);
+      var url = photo.src.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+      window.open(url); // Tomala prro
     } else {
       clearphoto();
     }

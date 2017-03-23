@@ -166,6 +166,12 @@ body{
  }
     .texto{    
         margin: 10px 0 0 20px;
+        color: grey;
+
+         list-style:none;
+    }
+    .texto:hover{
+       
     }
 
   .router-link-active .texto {
@@ -174,10 +180,7 @@ body{
        background: #2AA2AB;
        color: white;
     }
-    .link {
-        font-size: 10px;
-        text-decoration: none;
-    }
+  
 /*/ barra de navegacion*/    
   
     .logo {

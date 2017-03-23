@@ -31,13 +31,13 @@
                  
  
                     <p class="card-text">
-                        <i class="fa fa-hand-o-right" aria-hidden="true"></i><h5>{{numtickets}}</h5> <h5>{{addedname}} </h5>
+                      <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>  {{numtickets}} {{addedname}} </h5>
                     </p>
                     <p class="card-text">
                         <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Etapa 1 </h5>
                     </p>
                     <p class="card-text">
-                        <h5><i class="fa fa-hand-o-right" aria-hidden="true" ></i> Total a pagar {{total}}</h5>
+                        <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i> Total a pagar {{total}}</h5>
                     </p>
                     
                 </div>
