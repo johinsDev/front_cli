@@ -128,6 +128,7 @@ const mutations = {
                state.urlPdf = data.backUrlPdf;
                window.location.href = data.backUrlPdf;
            }
+           
            redirect.push({path: '/finish'});
        }else{
            state.state = 'rechazado';

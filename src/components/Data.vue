@@ -26,13 +26,11 @@
                                     <div class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="card-block">
                                             <form-ticket :buyer="buyer" :ticket="ticket" :numTicket="n" :key="n">
-                                            </form-ticket>
-                                           
+                                            </form-ticket>                                     
                                         </div>
                                     </div>
                                 </div>
                             </li>
-
                         </ul>
 
                     </div>

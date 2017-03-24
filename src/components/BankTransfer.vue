@@ -17,7 +17,11 @@
             <option value="J">Persona Juridica</option>
         </select>
         <br>
-        <button class="btn btn-primary" type="submit">Pagar</button>
+           <div v-if="show">
+            <p class="text_proc">Procesando pago</p>
+            <div class="loader">Loading...</div>
+        </div>
+        <button class="btn btn-primary" @click="show = ! show" type="submit">Pagar</button>
     </form>
 
 </template>
@@ -32,8 +36,10 @@
             return {
                 bank: '1023',
                 payment_method: 'PSE',
-                type_client: 'N'
+                type_client: 'N',
+                show: false
             }
+            
         },
         props: ['data', 'quantity', 'ticket'],
         methods: mapActions({

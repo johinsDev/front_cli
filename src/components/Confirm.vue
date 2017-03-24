@@ -21,7 +21,7 @@
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed"  style="color: white"  data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Efecty y Baloto
         </a>
       </h5>
@@ -35,7 +35,7 @@
   <div class="card">
       <div class="card-header" role="tab" id="headingThree">
           <h5 class="mb-0">
-              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+              <a class="collapsed"  style="color: white"  data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
                   PSE
               </a>
           </h5>
@@ -48,16 +48,7 @@
   </div>
 </div>
           </div>
-             <div class="col col-md-2  col-xl-2 ">
-                    <div class="card " style="width: 300px">
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+        
                 <div class="col col-md-2  col-xl-2 ">
                     <shoppingcart :numtickets="quantity" :addedname="ticket.name" :total="total"></shoppingcart>
                 </div>

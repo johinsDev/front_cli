@@ -23,8 +23,6 @@
                     <p class="text_proc">Procesando pago</p>
                      <div class="loader" >Loading...</div>
                 </div>
-               
-
                 <button v-on:click="show = !show" class="btn btn-primary">Pagar</button>
                 
 </form>

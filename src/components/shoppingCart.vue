@@ -9,7 +9,7 @@
                                     </h4>
                                 </div>
                                 <p class="card-text">
-                                    <h5><i class="fa fa-hand-o-right" aria-hidden="true"></i>No tienes compras</h5>
+                                    <h5><i class="fa fa-times-circle-o" aria-hidden="true"></i> No tienes compras</h5>
                                 </p>
                             </div>
 
